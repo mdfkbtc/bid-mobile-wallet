@@ -102,14 +102,18 @@ export const ImportWalletScreen = (props: Props) => {
 
   const importMnemonic = async (mnemonic: string) => {
     try {
+
+/*
       // trying other wallet types
       const segwitWallet = new SegwitP2SHWallet();
       segwitWallet.setSecret(mnemonic);
       if (segwitWallet.getAddress()) {
         // ok its a valid WIF
 
-        const legacyWallet = new LegacyWallet();
-        legacyWallet.setSecret(mnemonic);
+      const legacyWallet = new LegacyWallet();
+      legacyWallet.setSecret(mnemonic);
+      if (legacyWallet.getAddress()) {
+        // ok its a valid WIF
 
         await legacyWallet.fetchBalance();
         if (legacyWallet.getBalance() > 0) {
@@ -118,14 +122,14 @@ export const ImportWalletScreen = (props: Props) => {
           return saveWallet(legacyWallet);
         } else {
           // by default, we import wif as Segwit P2SH
-          await segwitWallet.fetchBalance();
-          await segwitWallet.fetchTransactions();
-          return saveWallet(segwitWallet);
+          //await segwitWallet.fetchBalance();
+          //await segwitWallet.fetchTransactions();
+          //return saveWallet(segwitWallet);
         }
       }
 
       // case - WIF is valid, just has uncompressed pubkey
-
+*/
       const legacyWallet = new LegacyWallet();
       legacyWallet.setSecret(mnemonic);
       if (legacyWallet.getAddress()) {
@@ -135,7 +139,7 @@ export const ImportWalletScreen = (props: Props) => {
       }
 
       // if we're here - nope, its not a valid WIF
-
+/*
       const hd2 = new HDSegwitP2SHWallet();
       await hd2.setSecret(mnemonic);
       if (hd2.validateMnemonic()) {
@@ -155,7 +159,7 @@ export const ImportWalletScreen = (props: Props) => {
           return saveWallet(hd4);
         }
       }
-
+*/
       const hd3 = new HDLegacyP2PKHWallet();
       await hd3.setSecret(mnemonic);
       if (hd3.validateMnemonic()) {
@@ -167,26 +171,28 @@ export const ImportWalletScreen = (props: Props) => {
       }
 
       // no balances? how about transactions count?
-
+/*
       if (hd2.validateMnemonic()) {
         await hd2.fetchTransactions();
         if (hd2.getTransactions().length !== 0) {
           return saveWallet(hd2);
         }
       }
+*/      
       if (hd3.validateMnemonic()) {
         await hd3.fetchTransactions();
         if (hd3.getTransactions().length !== 0) {
           return saveWallet(hd3);
         }
       }
+/*      
       if (hd4.validateMnemonic()) {
         await hd4.fetchTransactions();
         if (hd4.getTransactions().length !== 0) {
           return saveWallet(hd4);
         }
       }
-
+*/
       // not valid? maybe its a watch-only address?
 
       const watchOnly = new WatchOnlyWallet();
