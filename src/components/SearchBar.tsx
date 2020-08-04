@@ -86,11 +86,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: palette.searchBar,
-    height: 36,
+    height: 40,
     borderRadius: 10,
     paddingStart: 46,
     paddingEnd: 46,
     flex: 1,
+    borderColor: palette.textWhiteMuted,
+    borderWidth: 1,
   },
   searchIcon: {
     width: 22,
