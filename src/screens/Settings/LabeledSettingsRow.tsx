@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   label: {
     paddingBottom: 16,
     ...typography.caption,
-    color: palette.secondary,
+    color: palette.gradientPrimaryFirst,
   },
   greyLine: {
     marginVertical: 24,
