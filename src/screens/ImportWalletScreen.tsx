@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
   textArea: {
     marginTop: 24,
     height: 250,
-    backgroundColor: '#ffddbb'
+    backgroundColor: palette.gradientPrimarySecond
   },
   scanQRCodeButtonContainer: {
     marginTop: 12,

@@ -19,7 +19,7 @@ export const palette = {
   background: '#fff',
   backgroundDarker: '#fff',
   headerColor: '#4250b2',
-  border: 'rgb(204, 204, 204)',
+  border: '#4db9fe',
   error: 'rgb(244, 94, 89)',
   shadow: 'rgba(0, 0, 0, 0.12)',
   shadowLight: 'rgba(0, 0, 0, 0.08)',
