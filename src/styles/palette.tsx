@@ -1,7 +1,7 @@
 export const palette = {
   primary: '#f70949',
   secondary: '#4db9fe',
-  textSecondary: 'rgb(228, 185, 156)',
+  textSecondary: '#4db9fe',
   textBlack: '#000',
   textOrange: '#4250b2',
   textGreen: '#5ad123',
