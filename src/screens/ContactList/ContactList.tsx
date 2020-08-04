@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
   },
   listEmptyText: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
 });

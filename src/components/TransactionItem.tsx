@@ -17,7 +17,7 @@ export const TransactionItem = ({ item, onPress }: { item: Transaction; onPress:
         <Text style={[typography.headline5, {color: palette.textOrange}]} numberOfLines={1}>
           {item.walletLabel === CONST.allWallets ? i18n.transactions.details.noLabel : item.walletLabel}
         </Text>
-        {!!item.note && <Text style={[typography.caption, {color: palette.textWhiteMuted}]}>{item.note}</Text>}
+        {!!item.note && <Text style={[typography.caption, {color: palette.textBlackMuted}]}>{item.note}</Text>}
         <Text style={styles.label}>{confirmations()}</Text>
         <Text style={styles.label}>{moment(item.received).format('LT')}</Text>
       </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   label: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
   leftColumn: { justifyContent: 'space-between', maxWidth: '75%' },
   rightColumn: { alignItems: 'flex-end' },

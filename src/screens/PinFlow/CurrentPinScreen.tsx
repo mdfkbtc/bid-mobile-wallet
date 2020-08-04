@@ -53,7 +53,7 @@ export class CurrentPinScreen extends PureComponent<Props, State> {
         header={<Header navigation={this.props.navigation} isBackArrow title={i18n.onboarding.changePin} />}
       >
         <View style={styles.infoContainer}>
-          <Text style={[typography.headline4, {color: palette.white}]}>{i18n.onboarding.currentPin}</Text>
+          <Text style={[typography.headline4, {color: palette.black}]}>{i18n.onboarding.currentPin}</Text>
         </View>
         <View style={styles.pinContainer}>
           <PinInput value={this.state.pin} onTextChange={this.updatePin} />

@@ -9,9 +9,9 @@ const reverse = require('buffer-reverse');
 const ElectrumClient = require('electrum-client');
 
 const storageKey = 'ELECTRUM_PEERS';
-export const defaultPeer = { host: 'electrum.veles.network', tcp: '50001' };
+export const defaultPeer = { host: 'electrum.itzone.xyz', tcp: '50101' };
 const hardcodedPeers = [
-   { host: 'electrum.veles.network', tcp: '50001' },
+   { host: 'electrum.itzone.xyz', tcp: '50101' },
 ];
 
 let mainClient = false;

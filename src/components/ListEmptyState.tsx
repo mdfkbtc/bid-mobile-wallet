@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   title: { 
     ...typography.headline4,
-    color: palette.white,
+    color: palette.black,
   },
   image: {
     height: 172,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   description: {
     ...typography.caption,
     textAlign: 'center',
-    color: palette.white,
+    color: palette.black,
     lineHeight: 19,
   },
 });

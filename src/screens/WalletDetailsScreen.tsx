@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   typeLabel: {
-    color: palette.white,
+    color: palette.black,
     ...typography.overline,
   },
   labelInput: {

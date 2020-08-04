@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   valueContainer: {
     borderBottomWidth: 1,
-    borderColor: palette.white,
+    borderColor: palette.black,
     width: 40,
     height: 40,
     alignItems: 'center',

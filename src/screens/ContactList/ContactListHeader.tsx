@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { icons, images } from 'app/assets';
-import { Image } from 'app/components';
+import { GradientView, Image } from 'app/components';
 import { HEADER_HEIGHT } from 'app/components/Header';
 import { getStatusBarHeight, palette, typography } from 'app/styles';
 
@@ -19,7 +19,7 @@ export class ContactListHeader extends React.PureComponent<Props> {
   render() {
     const { onAddButtonPress, onBackArrowPress, title } = this.props;
     return (
-      <View style={[styles.container, {backgroundColor: palette.headerColor}]}>
+      <GradientView variant={GradientView.Variant.Primary} style={styles.container}>
         <View style={styles.header}>
           {!!onBackArrowPress && (
             <TouchableOpacity style={styles.leftElement} onPress={onBackArrowPress}>
@@ -34,7 +34,7 @@ export class ContactListHeader extends React.PureComponent<Props> {
           )}
         </View>
         {this.props.children}
-      </View>
+      </GradientView>
     );
   }
 }

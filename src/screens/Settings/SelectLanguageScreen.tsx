@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   languageItem: {
     ...typography.caption,
     width: '100%',
-    color: palette.white,
+    color: palette.black,
   },
   langaugeItemContainer: {
     marginVertical: 8,

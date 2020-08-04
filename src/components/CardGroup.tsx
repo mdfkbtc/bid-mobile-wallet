@@ -22,7 +22,7 @@ export const CardHeader = (props: CardHeaderProps) => {
     <TouchableOpacity
       activeOpacity={1}
       onPress={onPress}
-      style={[styles.headerContainer, { borderBottomColor: isChoosen ? palette.textSecondary : palette.white }]}
+      style={[styles.headerContainer, { borderBottomColor: isChoosen ? palette.textSecondary : palette.black }]}
     >
       <Text style={styles.headerTitle}>{title}</Text>
     </TouchableOpacity>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     ...typography.caption,
     textAlign: 'center',
-    color: palette.white,
+    color: palette.black,
     fontWeight: 'bold',
     textTransform: 'capitalize'
   },

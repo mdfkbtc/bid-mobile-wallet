@@ -20,5 +20,5 @@ export const Avatar = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: { width: 33, height: 33, borderRadius: 20, justifyContent: 'center' },
-  title: { ...typography.headline6, color: palette.white, textAlign: 'center' },
+  title: { ...typography.headline6, color: palette.black, textAlign: 'center' },
 });

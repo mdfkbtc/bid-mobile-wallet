@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   },
   fee: {
     ...typography.headline9,
-    color: palette.white,
+    color: palette.black,
   },
   feeBox: {
     backgroundColor: palette.textSecondary,
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   },
   buttonDescription: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
   address: {
     ...typography.headline9,

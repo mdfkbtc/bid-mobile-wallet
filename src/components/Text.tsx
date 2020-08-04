@@ -12,6 +12,6 @@ export const Text: React.FunctionComponent<Props> = (props: Props) => (
 const styles = StyleSheet.create({
   text: {
     ...typography.body,
-    color: palette.white,
+    color: palette.black,
   },
 });

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   title: {
     ...typography.headline3,
     marginTop: '30%',
-    color: palette.white
+    color: palette.black
   },
   image: {
     height: 172,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   description: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     textAlign: 'center',
     lineHeight: 19,
     flexGrow: 1,

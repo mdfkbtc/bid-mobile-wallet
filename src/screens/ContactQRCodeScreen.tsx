@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   address: {
     ...typography.headline5,
-    color: palette.white,
+    color: palette.black,
     textAlign: 'center',
   },
 });

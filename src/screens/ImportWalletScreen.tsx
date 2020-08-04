@@ -109,7 +109,7 @@ export const ImportWalletScreen = (props: Props) => {
       segwitWallet.setSecret(mnemonic);
       if (segwitWallet.getAddress()) {
         // ok its a valid WIF
-
+ 
       const legacyWallet = new LegacyWallet();
       legacyWallet.setSecret(mnemonic);
       if (legacyWallet.getAddress()) {
@@ -268,11 +268,11 @@ const styles = StyleSheet.create({
   title: {
     ...typography.headline4,
     textAlign: 'center',
-    color: palette.white,
+    color: palette.black,
   },
   subtitle: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     paddingTop: 18,
     textAlign: 'center',
   },

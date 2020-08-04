@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
     ...typography.headline4,
     alignSelf: 'center',
     marginTop: 10,
-    color: palette.white,
+    color: palette.black,
   },
   description: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     alignSelf: 'center',
     marginTop: 20,
     marginBottom: 40,

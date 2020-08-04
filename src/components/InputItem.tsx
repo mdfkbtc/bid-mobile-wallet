@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginTop: 6,
-    color: palette.white,
+    color: palette.black,
     paddingRight: 50,
     minHeight: 27,
     borderBottomColor: palette.border,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     top: 12,
     ...typography.caption,
     lineHeight: 19,
-    color: palette.white,
+    color: palette.black,
   },
   error: {
     marginTop: 3,

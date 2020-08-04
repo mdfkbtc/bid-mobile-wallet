@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   title: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
   image: {
     width: 19,

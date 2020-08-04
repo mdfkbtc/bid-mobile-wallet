@@ -57,7 +57,8 @@ export const Header = ({ title, isBackArrow, isCancelButton, navigation, addFunc
   };
 
   return (
-    <View style={[styles.container, {backgroundColor:palette.headerColor}]}>
+    <GradientView variant={GradientView.Variant.Primary} style={styles.container}>
+
       <>
         {renderLeftItem()}
         <Text numberOfLines={1} style={[styles.title, { marginLeft: (cancelButtonWith && cancelButtonWith / 2) || 0 }]}>
@@ -69,7 +70,7 @@ export const Header = ({ title, isBackArrow, isCancelButton, navigation, addFunc
           </TouchableOpacity>
         )}
       </>
-    </View>
+    </GradientView>
   );
 };
 

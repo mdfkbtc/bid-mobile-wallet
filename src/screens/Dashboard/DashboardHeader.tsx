@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { icons, images } from 'app/assets';
-import { Image } from 'app/components';
+import { GradientView ,Image } from 'app/components';
 import { HEADER_HEIGHT } from 'app/components/Header';
 import { getStatusBarHeight, palette, typography } from 'app/styles';
 
@@ -18,7 +18,7 @@ export class DashboardHeader extends React.PureComponent<Props> {
   render() {
     const { onAddPress, onFilterPress } = this.props;
     return (
-      <View style={[styles.container, {backgroundColor: palette.headerColor}]}>
+      <GradientView variant={GradientView.Variant.Primary} style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.leftElement} onPress={onFilterPress}>
             <Image style={styles.icon} source={icons.filter} />
@@ -29,7 +29,7 @@ export class DashboardHeader extends React.PureComponent<Props> {
           </TouchableOpacity>
         </View>
         {this.props.children}
-      </View>
+      </GradientView>
     );
   }
 }

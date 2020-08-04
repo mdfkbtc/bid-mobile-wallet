@@ -111,30 +111,6 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
     }
   }
 
-  renderAdvancedSection() {
-    if (this.state.activeBitcoin && this.state.isAdvancedOptionsEnabled) {
-      return (
-        <>
-          <Text style={styles.advancedOptionsLabel}>{i18n.wallets.add.advancedOptions}</Text>
-          <RadioGroup color={palette.secondary} onSelect={this.onSelect} selectedIndex={this.state.selectedIndex}>
-            <RadioButton style={styles.radioButton} value={HDLegacyP2PKHWallet.type}>
-              <View style={styles.radioButtonContent}>
-                <Text style={styles.radioButtonTitle}>{HDLegacyP2PKHWallet.typeReadable}</Text>
-                <Text style={styles.radioButtonSubtitle}>{i18n.wallets.add.legacyAddress}</Text>
-              </View>
-            </RadioButton>
-            <RadioButton style={styles.radioButton} value={LegacyWallet.type}>
-              <View style={styles.radioButtonContent}>
-                <Text style={styles.radioButtonTitle}>{LegacyWallet.typeReadable}</Text>
-                <Text style={styles.radioButtonSubtitle}>{i18n.wallets.add.singleLegacyAddress}</Text>
-              </View>
-            </RadioButton>
-          </RadioGroup>
-        </>
-      );
-    }
-  }
-
   render() {
     if (this.state.isSuccess) {
       return (
@@ -169,7 +145,21 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
         <Text style={styles.subtitle}>{i18n.wallets.add.subtitle}</Text>
         <Text style={styles.description}>{i18n.wallets.add.description}</Text>
         <InputItem error={this.validationError} setValue={this.setLabel} label={i18n.wallets.add.inputLabel} />
-        {this.renderAdvancedSection()}
+        <Text style={styles.advancedOptionsLabel}>{i18n.wallets.add.advancedOptions}</Text>
+        <RadioGroup color={palette.secondary} onSelect={this.onSelect} selectedIndex={this.state.selectedIndex}>
+          <RadioButton style={styles.radioButton} value={HDLegacyP2PKHWallet.type}>
+            <View style={styles.radioButtonContent}>
+              <Text style={styles.radioButtonTitle}>{HDLegacyP2PKHWallet.typeReadable}</Text>
+              <Text style={styles.radioButtonSubtitle}>{i18n.wallets.add.legacyAddress}</Text>
+            </View>
+          </RadioButton>
+          <RadioButton style={styles.radioButton} value={LegacyWallet.type}>
+            <View style={styles.radioButtonContent}>
+              <Text style={styles.radioButtonTitle}>{LegacyWallet.typeReadable}</Text>
+              <Text style={styles.radioButtonSubtitle}>{i18n.wallets.add.singleLegacyAddress}</Text>
+            </View>
+          </RadioButton>
+        </RadioGroup>
       </ScreenTemplate>
     );
   }
@@ -194,20 +184,20 @@ const styles = StyleSheet.create({
   },
   description: {
     marginBottom: 52,
-    color: palette.white,
+    color: palette.black,
     ...typography.caption,
     textAlign: 'center',
   },
   isLoadingDescription: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     textAlign: 'center',
     lineHeight: 19,
     flexGrow: 1,
     marginVertical: 10,
   },
   advancedOptionsLabel: {
-    color: palette.white,
+    color: palette.black,
     marginBottom: 12,
   },
   radioButton: {
@@ -225,7 +215,7 @@ const styles = StyleSheet.create({
   },
   radioButtonSubtitle: {
     ...typography.overline,
-    color: palette.white,
+    color: palette.black,
   },
   importButtonContainer: {
     marginTop: 12,

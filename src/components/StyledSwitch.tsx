@@ -17,7 +17,7 @@ const trackColor = {
 export const StyledSwitch = ({ onValueChange, value, disabled }: Props) => (
   <Switch
     thumbColor={palette.buttonColor}
-    ios_backgroundColor={palette.white}
+    ios_backgroundColor={palette.black}
     trackColor={trackColor}
     value={value}
     onValueChange={onValueChange}

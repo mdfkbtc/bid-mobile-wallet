@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 18,
     marginTop: 40,
-    color: palette.white,
+    color: palette.black,
   },
   description: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     alignSelf: 'center',
     marginVertical: 10,
     marginHorizontal: 15,

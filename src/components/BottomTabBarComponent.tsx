@@ -10,7 +10,8 @@ import { BottomTabBarIcon } from './BottomTabBarIcon';
 import { GradientView } from './GradientView';
 
 export const BottomTabBarComponent = ({ state, descriptors, navigation }: BottomTabBarProps) => (
-  <View style={[{backgroundColor: palette.headerColor}]}>
+  <GradientView variant={GradientView.Variant.Secondary} >
+
     <View style={styles.buttonsContainer}>
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
@@ -30,14 +31,14 @@ export const BottomTabBarComponent = ({ state, descriptors, navigation }: Bottom
         return (
           <TouchableOpacity key={index} style={styles.button} onPress={onPress} activeOpacity={0.5}>
             <BottomTabBarIcon source={isFocused ? images[route.name] : images[`${route.name}Inactive`]} />
-            <Text style={{ ...typography.subtitle2, color: isFocused ? palette.textWhite : palette.textWhiteMuted }}>
+            <Text style={{ ...typography.subtitle2, color: isFocused ? palette.white : palette.textWhiteMuted }}>
               {label}
             </Text>
           </TouchableOpacity>
         );
       })}
     </View>
-  </View>
+  </GradientView>
 );
 
 const styles = StyleSheet.create({

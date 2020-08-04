@@ -95,7 +95,7 @@ export class CreatePinScreen extends PureComponent<Props, State> {
         noScroll
       >
         <View style={styles.infoContainer}>
-          <Text style={[typography.headline4, {color: palette.white}]}>
+          <Text style={[typography.headline4, {color: palette.black}]}>
             {flowType === FlowType.newPin ? i18n.onboarding.createNewPin : i18n.onboarding.createPin}
           </Text>
           <Text style={styles.pinDescription}>{i18n.onboarding.createPinDescription}</Text>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   pinDescription: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     margin: 20,
     textAlign: 'center',
   },

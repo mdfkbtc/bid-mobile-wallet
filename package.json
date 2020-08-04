@@ -49,7 +49,6 @@
     "test": "yarn jest",
     "jest": "node node_modules/jest/bin/jest.js tests/integration/*",
     "install_local": "cd src && yarn install",
-    "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint": "yarn lint",
     "unit": "./node_modules/.bin/mocha tests/unit/*",
     "typescript:check": "tsc --noEmit",
@@ -186,8 +185,7 @@
     "stream": "stream-browserify"
   },
   "lint-staged": {
-    "./**/*.{ts,tsx,js,jsx}": [
-    ],
+    "./**/*.{ts,tsx,js,jsx}": [],
     "./**/*.{ts|tsx}": [
       "yarn typescript:check"
     ]

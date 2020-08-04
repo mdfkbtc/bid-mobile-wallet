@@ -72,7 +72,7 @@ export class TransactionList extends Component<Props, State> {
   renderSectionTitle = ({ section }: { section: any }) => {
     return (
       <View style={{ marginTop: 30, marginBottom: 10 }}>
-        <Text style={{ ...typography.caption, color: palette.white }}>{section.title}</Text>
+        <Text style={{ ...typography.caption, color: palette.black }}>{section.title}</Text>
       </View>
     );
   };
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
   noTransactionsImage: { height: 167, width: 167, marginVertical: 30 },
   noTransactionsLabel: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
 });

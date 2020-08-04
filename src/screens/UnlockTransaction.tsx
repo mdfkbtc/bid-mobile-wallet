@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     ...typography.headline4,
     alignSelf: 'center',
     marginTop: 10,
-    color: palette.white,
+    color: palette.black,
   },
   inputContainer: {
     width: '100%',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 
   description: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     alignSelf: 'center',
     marginTop: 20,
     marginBottom: 44,

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     ...typography.button,
-    color: palette.white,
+    color: palette.black,
   },
   disabledStyle: {
     opacity: 0.54,

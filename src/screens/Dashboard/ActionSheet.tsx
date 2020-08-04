@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     ...typography.headline4,
     textAlign: 'center',
-    color: palette.white,
+    color: palette.black,
   },
   walletContainer: {
     marginTop: 31,

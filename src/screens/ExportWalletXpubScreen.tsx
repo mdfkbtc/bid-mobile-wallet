@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
   },
   title: { ...typography.headline4, marginTop: 16,color: palette.textOrange, textAlign: 'center' },
   xpub: {
-    ...typography.caption, color: palette.white,
+    ...typography.caption, color: palette.black,
   },
 });

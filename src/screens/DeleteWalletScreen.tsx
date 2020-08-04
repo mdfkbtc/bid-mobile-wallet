@@ -73,7 +73,7 @@ const mapDispatchToProps = {
 export default connect(null, mapDispatchToProps)(DeleteWalletScreen);
 
 const styles = StyleSheet.create({
-  title: { ...typography.headline4, marginTop: 16, color: palette.white, textAlign: 'center' },
+  title: { ...typography.headline4, marginTop: 16, color: palette.black, textAlign: 'center' },
   description: {
     ...typography.caption,
     color: palette.textRed,

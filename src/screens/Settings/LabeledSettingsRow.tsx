@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   greyLine: {
     marginVertical: 24,
-    borderColor: palette.white,
+    borderColor: palette.black,
     width: '120%',
     borderWidth: StyleSheet.hairlineWidth,
     left: -20,

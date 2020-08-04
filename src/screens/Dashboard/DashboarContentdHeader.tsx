@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   buttonDescription: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
   circleButtonImage: { height: 32, width: 32, margin: 5 },
   circleButtonText: {
     ...typography.headline6,
-    color: palette.white,
+    color: palette.black,
   },
 });

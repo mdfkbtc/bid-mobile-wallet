@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     marginBottom: 13,
   },
   contentRowContainer: { marginVertical: 14 },
-  contentRowTitle: { ...typography.overline, color: palette.white },
-  contentRowBody: { ...typography.caption, marginTop: 4, marginBottom: 3, color: palette.textWhiteMuted },
+  contentRowTitle: { ...typography.overline, color: palette.black },
+  contentRowBody: { ...typography.caption, marginTop: 4, marginBottom: 3, color: palette.textBlackMuted },
   row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
 });

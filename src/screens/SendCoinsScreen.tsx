@@ -595,7 +595,7 @@ export class SendCoinsScreen extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   feeTitle: {
-    color: palette.white,
+    color: palette.black,
     marginRight: 5,
   },
   buttonContainer: {
@@ -606,7 +606,7 @@ const styles = StyleSheet.create({
   },
   setTransactionHeaderDescription: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     textAlign: 'center',
     paddingTop: 20,
     paddingBottom: 40,

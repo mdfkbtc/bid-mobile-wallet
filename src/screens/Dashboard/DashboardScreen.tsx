@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.background,
   },
   clearFiltersButtonContainer: {
-    backgroundColor: palette.white,
+    backgroundColor: palette.black,
   },
   clearFiltersButton: {
     height: 59,

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     alignItems: 'center',
   },
-  title: { ...typography.headline4,color: palette.white, textAlign: 'center' },
+  title: { ...typography.headline4,color: palette.black, textAlign: 'center' },
   mnemonicPhraseContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   description: {
     marginBottom: 52,
-    color: palette.white,
+    color: palette.black,
     ...typography.caption,
     textAlign: 'center',
   },

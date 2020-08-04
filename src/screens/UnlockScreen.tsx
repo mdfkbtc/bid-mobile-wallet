@@ -82,7 +82,7 @@ export class UnlockScreen extends PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: palette.white,
+    backgroundColor: palette.black,
     alignItems: 'center',
     ...StyleSheet.absoluteFillObject,
     paddingTop: getStatusBarHeight(),

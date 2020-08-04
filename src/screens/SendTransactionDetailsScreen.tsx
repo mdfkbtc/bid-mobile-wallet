@@ -86,16 +86,16 @@ const styles = StyleSheet.create({
   title: {
     ...typography.headline4,
     paddingVertical: 20,
-    color: palette.white,
+    color: palette.black,
   },
   detailsTitle: {
     ...typography.headline4,
     alignSelf: 'center',
-    color: palette.white,
+    color: palette.black,
   },
   description: {
     ...typography.caption,
-    color: palette.white,
+    color: palette.black,
     textAlign: 'center',
     paddingVertical: 20,
   },
@@ -109,5 +109,5 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   listItemTitle: { ...typography.overline, color: palette.secondary, marginTop: 24 },
-  listItemContent: { ...typography.caption, marginTop: 4, color: palette.white, marginBottom: 3 },
+  listItemContent: { ...typography.caption, marginTop: 4, color: palette.black, marginBottom: 3 },
 });
