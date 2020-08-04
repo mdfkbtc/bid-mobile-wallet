@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     ...typography.subtitle1,
-    color: palette.black,
+    color: palette.textBlackMuted,
   },
   inputContainer: {
     backgroundColor: palette.searchBar,
