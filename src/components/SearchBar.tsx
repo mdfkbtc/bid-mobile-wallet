@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     top: 8,
   },
   cancelButtonContainer: {
-    marginTop: 10,
+    marginTop: 11,
     marginStart: 12,
   },
   clearButton: {
