@@ -30,21 +30,21 @@ export default class NetworkTransactionFees {
         if (typeof response === 'object') {
           const fast = loc.formatBalanceWithoutSuffix(
             new BigNumber(response.fast)
-              .multipliedBy(1)
+              .multipliedBy(10)
               .toNumber()
               .toFixed(0),
             BitcoinUnit.SATS,
           );
           const medium = loc.formatBalanceWithoutSuffix(
             new BigNumber(response.medium)
-              .multipliedBy(1)
+              .multipliedBy(10)
               .toNumber()
               .toFixed(0),
             BitcoinUnit.SATS,
           );
           const slow = loc.formatBalanceWithoutSuffix(
             new BigNumber(response.slow)
-              .multipliedBy(1)
+              .multipliedBy(10)
               .toNumber()
               .toFixed(0),
             BitcoinUnit.SATS,

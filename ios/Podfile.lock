@@ -279,17 +279,17 @@ PODS:
     - SDWebImageWebPCoder (~> 0.6.1)
   - RNFS (2.13.3):
     - React
-  - RNGestureHandler (1.6.1):
+  - RNGestureHandler (1.7.0):
     - React
   - RNHandoff (0.0.3):
     - React
-  - RNLocalize (1.4.0):
+  - RNLocalize (1.4.1):
     - React
   - RNQuickAction (0.3.12):
     - React
   - RNRate (1.0.1):
     - React
-  - RNReanimated (1.9.0):
+  - RNReanimated (1.10.1):
     - React
   - RNScreens (2.9.0):
     - React
@@ -572,12 +572,12 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 722dc13c269b9dbf305aa4b790d36731602e99b7
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
-  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNHandoff: d3b0754cca3a6bcd9b25f544f733f7f033ccf5fa
-  RNLocalize: b6df30cc25ae736d37874f9bce13351db2f56796
+  RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
   RNQuickAction: eca9a5dd04b5cdf8a0dd32d8be8844dc33aba2bd
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
-  RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
+  RNReanimated: c2bb7438b57a3d987bb2e4e6e4bca94787e30b02
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNSecureKeyStore: f1ad870e53806453039f650720d2845c678d89c8
   RNSentry: 2803ba8c8129dcf26b79e9b4d8c80168be6e4390
@@ -592,6 +592,6 @@ SPEC CHECKSUMS:
   ToolTipMenu: 8ac61aded0fbc4acfe7e84a7d0c9479d15a9a382
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: f708eddb7bb6b7e7bfacaa787b3c1a97c45870fb
+PODFILE CHECKSUM: 84fbaa2cea68ddcee90dc73f1b75988e071809be
 
 COCOAPODS: 1.9.3
