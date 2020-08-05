@@ -560,7 +560,7 @@ export class SendCoinsScreen extends Component<Props, State> {
 
           <View style={styles.fee}>
             <Text style={styles.feeTitle}>{i18n.send.details.fee}</Text>
-            <StyledText title={`${fee} ${i18n.send.details.feeUnit}`} onPress={this.setTransactionFee} />
+            <StyledText title={`${fee} ${i18n.send.details.feeUnit}`} onPress={this.disabled} />
           </View>
           <View style={styles.addressContainer}>
             {this.renderAddressInput()}

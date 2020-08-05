@@ -43,7 +43,7 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
     activeBitcoin: false,
     isAdvancedOptionsEnabled: false,
     walletBaseURI: '',
-    selectedIndex: 1,
+    selectedIndex: 0,
     secret: [],
   };
 
@@ -145,14 +145,13 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
         <Text style={styles.subtitle}>{i18n.wallets.add.subtitle}</Text>
         <Text style={styles.description}>{i18n.wallets.add.description}</Text>
         <InputItem error={this.validationError} setValue={this.setLabel} label={i18n.wallets.add.inputLabel} />
-        <Text style={styles.advancedOptionsLabel}>{i18n.wallets.add.advancedOptions}</Text>
         <RadioGroup color={palette.secondary} onSelect={this.onSelect} selectedIndex={this.state.selectedIndex}>
           <RadioButton style={styles.radioButton} value={HDLegacyP2PKHWallet.type}>
             <View style={styles.radioButtonContent}>
               <Text style={styles.radioButtonTitle}>{HDLegacyP2PKHWallet.typeReadable}</Text>
               <Text style={styles.radioButtonSubtitle}>{i18n.wallets.add.legacyAddress}</Text>
             </View>
-          </RadioButton>
+          </RadioButton>          
           <RadioButton style={styles.radioButton} value={LegacyWallet.type}>
             <View style={styles.radioButtonContent}>
               <Text style={styles.radioButtonTitle}>{LegacyWallet.typeReadable}</Text>
