@@ -30,7 +30,7 @@ export const BottomTabBarComponent = ({ state, descriptors, navigation }: Bottom
         };
         return (
           <TouchableOpacity key={index} style={styles.button} onPress={onPress} activeOpacity={0.5}>
-            <BottomTabBarIcon source={isFocused ? images[route.name] : images[`${route.name}Inactive`]} />
+            <BottomTabBarIcon source={isFocused ? images[`${route.name}Active`] : images[`${route.name}Inactive`]} />
             <Text style={{ ...typography.subtitle2, color: isFocused ? palette.white : palette.textWhiteMuted }}>
               {label}
             </Text>
