@@ -13,6 +13,7 @@ import {
   MessageScreen,
   EditTextScreen,
   UnlockTransaction,
+  UnlockScreen,
 } from 'app/screens';
 
 import { MainCardStackNavigator } from './MainCardStackNavigator';
@@ -34,6 +35,7 @@ export const RootNavigator = () => (
     <Stack.Screen name={Route.DeleteWallet} component={DeleteWalletScreen} />
     <Stack.Screen name={Route.DeleteContact} component={DeleteContactScreen} />
     <Stack.Screen name={Route.SendTransactionDetails} component={SendTransactionDetailsScreen} />
+    <Stack.Screen name={Route.UnlockScreen} component={UnlockScreen} />
   </Stack.Navigator>
 );
 

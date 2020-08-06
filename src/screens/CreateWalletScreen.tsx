@@ -100,6 +100,13 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
     this.setState({ isLoading: false });
   };
 
+
+  goToUnlockScreen = () => {
+    this.props.navigation.navigate(Route.UnlockScreen, {
+      onSuccess: this.createWallet,
+    });
+  };
+
   get canCreateWallet(): boolean {
     return this.state.activeBitcoin && !!this.state.label && !this.validationError;
   }
@@ -130,7 +137,7 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
             <Button
               disabled={!this.canCreateWallet}
               loading={this.state.isLoading}
-              onPress={this.createWallet}
+              onPress={this.goToUnlockScreen}
               title={i18n.wallets.add.addWalletButton}
             />
             <FlatButton
