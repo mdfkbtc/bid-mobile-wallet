@@ -26,10 +26,6 @@ export class HDLegacyP2PKHWallet extends AbstractHDWallet {
     return true;
   }
 
-  allowSendMax() {
-    return true;
-  }
-
   async getXpub() {
     if (this._xpub) {
       return this._xpub; // cache hit

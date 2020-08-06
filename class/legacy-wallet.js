@@ -30,6 +30,10 @@ export class LegacyWallet extends AbstractWallet {
     return false;
   }
 
+  allowSendMax() {
+    return true;
+  }
+
   /**
    * Simple function which says if we hve some low-confirmed transactions
    * and we better fetch them
