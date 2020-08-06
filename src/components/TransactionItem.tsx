@@ -1,9 +1,10 @@
 import moment from 'moment';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { CONST, Transaction } from 'app/consts';
 import { typography, palette } from 'app/styles';
+import { images } from 'app/assets';
 
 const i18n = require('../../loc');
 
@@ -22,6 +23,7 @@ export const TransactionItem = ({ item, onPress }: { item: Transaction; onPress:
         <Text style={styles.label}>{moment(item.received).format('LT')}</Text>
       </View>
       <View style={styles.rightColumn}>
+        <Image source={item.value <0 ? images.yellowMinus : images.yellowPlus} style={styles.valueImage} />
         <Text style={[typography.headline5, { color: item.value < 0 ? palette.textRed : palette.textGreen }]}>
           {i18n.formatBalanceWithoutSuffix(Number(item.value), item.walletPreferredBalanceUnit)}
         </Text>
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
     ...typography.caption,
     color: palette.black,
   },
+  valueImage: { height: 19, borderRadius: 50, opacity: 0.75 },
   leftColumn: { justifyContent: 'space-between', maxWidth: '75%' },
   rightColumn: { alignItems: 'flex-end' },
 });
