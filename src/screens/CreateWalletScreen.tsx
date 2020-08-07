@@ -69,6 +69,7 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
   setLabel = (label: string) => this.setState({ label });
 
   navigateToImportWallet = () => this.props.navigation.navigate(Route.ImportWallet);
+  navigateToCreateWallet = () => this.props.navigation.navigate(Route.CreateWallet);
 
   getWalletClassByIndex = (index: number) => {
     switch (index) {
@@ -103,7 +104,7 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
 
   goToUnlockScreen = () => {
     this.props.navigation.navigate(Route.UnlockScreen, {
-      onSuccess: this.createWallet,
+      onSuccess: this.navigateToCreateWallet && this.createWallet,
     });
   };
 
