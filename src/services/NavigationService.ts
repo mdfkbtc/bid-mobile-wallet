@@ -5,4 +5,7 @@ export const navigationRef: any = React.createRef<typeof NavigationContainer>();
 
 export default class NavigationService {
   navigate = (name: string, params: {}) => navigationRef.current?.navigate(name, params);
+  goBack = () => navigationRef.current?.goBack();
+  canGoBack = () => navigationRef.current?.canGoBack();
+  reset = (...args) => navigationRef.current?.reset(...args);
 }

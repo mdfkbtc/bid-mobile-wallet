@@ -52,7 +52,7 @@ export class UnlockScreen extends PureComponent<Props, State> {
           console.log(this.state);
           console.log(this.props);
           this.props.onSuccessfullyAuthenticated && this.props.onSuccessfullyAuthenticated();
-          this.props.navigation.goBack();
+          this.props.route && this.props.route.params.goBack && this.props.navigation && this.props.navigation.goBack();
           this.props.route && this.props.route.params.onSuccess && this.props.route.params.onSuccess();
         } else {
           this.setState({
@@ -74,7 +74,8 @@ export class UnlockScreen extends PureComponent<Props, State> {
     console.log('rendering shit');
     console.log(this.state);
     console.log(this.props.route);
-    //this.props.navigation.canGoBack(false);
+    console.log(this.props);
+
     const { error, pin } = this.state;
     return (
       <View style={styles.container}>

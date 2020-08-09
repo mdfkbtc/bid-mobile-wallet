@@ -9,10 +9,12 @@ import { ifIphoneX } from 'app/styles/helpers';
 import { BottomTabBarIcon } from './BottomTabBarIcon';
 import { GradientView } from './GradientView';
 
-import { CreateMessage, MessageType } from 'app/helpers/MessageCreator';
+import { CreateMessage, CreatePersistentMessage, MessageType } from 'app/helpers/MessageCreator';
 import { NavigationService } from 'app/services';
 import { Route } from 'app/consts';
 import { UnlockScreen } from 'app/screens';
+import { BackHandler } from 'react-native';
+import { PasswordNavigator } from '../navigators/PasswordNavigator';
 
 export const BottomTabBarComponent = ({ state, descriptors, navigation }: BottomTabBarProps) => (
   <GradientView variant={GradientView.Variant.Secondary} >
@@ -67,23 +69,10 @@ interface Props {
 
 
 
-const onLogoutPress = ({ state, descriptors, navigation }: BottomTabBarProps) => {
-  /*
-  NavigationService.navigate(Route.UnlockScreen, {
-    onSuccess: () => NavigationService.navigate(Route.Dashboard)
-  });*/
-
-  //const logoutOnSuccessfullyAuthenticated = ({ state, descriptors, navigation }: BottomTabBarProps) => {
-  //NavigationService.navigate(Route.Dashboard);
-  //  console.log('hmm');
-  //};
-
-  //logoutOnSuccessfullyAuthenticated();
-
-  
+const onLogoutPress = () => {  
   CreateMessage({
     title: "Logged Out",
-    description: "You have been successfully logged out",
+    description: "You have been successfully logged out. Now you can close the app",
     type: MessageType.success,
     buttonProps: {
       title: "Log In again",

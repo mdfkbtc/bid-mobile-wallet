@@ -57,6 +57,7 @@ export enum Route {
   AdvancedOptions = 'AdvancedOptions',
   UnlockTransaction = 'UnlockTransaction',
   FilterTransactions = 'FilterTransactions',
+  Logout = 'Logout',
 }
 
 export interface Wallet {
@@ -138,6 +139,7 @@ export type RootStackParams = {
   [Route.ImportWalletQRCode]: undefined;
   [Route.ActionSheet]: { wallets: Wallet[]; selectedIndex: number; onPress: (index: number) => void };
   [Route.UnlockTransaction]: { onSuccess: () => void };
+  [Route.UnlockScreen]: { onSuccess: string };
   [Route.PasswordNavigator]: undefined;
   [Route.EditText]: {
     title: string;

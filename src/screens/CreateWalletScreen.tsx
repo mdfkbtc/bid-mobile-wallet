@@ -105,6 +105,7 @@ export class CreateWalletScreen extends React.PureComponent<Props, State> {
   goToUnlockScreen = () => {
     this.props.navigation.navigate(Route.UnlockScreen, {
       onSuccess: this.navigateToCreateWallet && this.createWallet,
+      goBack: true
     });
   };
 

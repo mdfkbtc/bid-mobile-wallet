@@ -3,7 +3,7 @@ import React from 'react';
 
 import { BottomTabBarComponent } from 'app/components';
 import { Route, MainTabNavigatorParams } from 'app/consts';
-import { ContactListScreen, DashboardScreen, SettingsScreen } from 'app/screens';
+import { ContactListScreen, DashboardScreen, SettingsScreen, LogoutScreen } from 'app/screens';
 
 const i18n = require('../../loc');
 
@@ -36,6 +36,13 @@ export const MainTabNavigator = () => {
         component={SettingsScreen}
         options={() => ({
           tabBarLabel: i18n.tabNavigator.settings,
+        })}
+      />
+      <Tab.Screen
+        name={Route.Logout}
+        component={LogoutScreen}
+        options={() => ({
+          tabBarLabel: 'Logout',
         })}
       />
     </Tab.Navigator>

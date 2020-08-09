@@ -39,3 +39,24 @@ export const CreateMessage = (message: Message) => {
     asyncTask: message.asyncTask,
   });
 };
+
+export const CreatePersistentMessage = (message: Message) => {
+  const processingImageStyle = {
+    height: 180,
+    width: 161,
+    marginVertical: 36,
+  };
+  return NavigationService.reset({
+    index: 0,
+    routes: [
+      { name: Route.Message, params: {
+        title: message.title,
+        description: message.description,
+        source: images[message.type],
+        imageStyle: message.type === MessageType.processingState ? processingImageStyle : null,
+        buttonProps: null,
+        asyncTask: message.asyncTask,
+      }}
+    ]
+  });
+};

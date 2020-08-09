@@ -14,6 +14,7 @@ import {
   EditTextScreen,
   UnlockTransaction,
   UnlockScreen,
+  LogoutScreen,
 } from 'app/screens';
 
 import { MainCardStackNavigator } from './MainCardStackNavigator';
