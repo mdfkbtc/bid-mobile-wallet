@@ -24,6 +24,7 @@ export class UnlockScreen extends PureComponent<Props, State> {
   state: State = {
     pin: '',
     error: '',
+    onSuccessfullyAuthenticated: '',
   };
 
   async componentDidMount() {
@@ -47,7 +48,12 @@ export class UnlockScreen extends PureComponent<Props, State> {
       if (this.state.pin.length === CONST.pinCodeLength) {
         const setPin = await SecureStorageService.getSecuredValue('pin');
         if (setPin === this.state.pin) {
+          console.log('success baby');
+          console.log(this.state);
+          console.log(this.props);
           this.props.onSuccessfullyAuthenticated && this.props.onSuccessfullyAuthenticated();
+          this.props.navigation.goBack();
+          this.props.route && this.props.route.params.onSuccess && this.props.route.params.onSuccess();
         } else {
           this.setState({
             error: i18n.onboarding.pinDoesNotMatch,
@@ -65,6 +71,10 @@ export class UnlockScreen extends PureComponent<Props, State> {
   };
 
   render() {
+    console.log('rendering shit');
+    console.log(this.state);
+    console.log(this.props.route);
+    //this.props.navigation.canGoBack(false);
     const { error, pin } = this.state;
     return (
       <View style={styles.container}>
