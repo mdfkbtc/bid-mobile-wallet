@@ -29,8 +29,9 @@ export const BottomTabBarComponent = ({ state, descriptors, navigation }: Bottom
             target: route.key,
             canPreventDefault: true,
           });
+          console.log(index);
 
-          if (!isFocused && !event.defaultPrevented) {
+          if (!isFocused && !event.defaultPrevented && state.index != 3) {
             navigation.navigate(route.name);
           }
         };
@@ -43,12 +44,6 @@ export const BottomTabBarComponent = ({ state, descriptors, navigation }: Bottom
           </TouchableOpacity>
         );
       })}
-      <TouchableOpacity key={4} style={styles.button} onPress={onLogoutPress} activeOpacity={0.5}>
-        <BottomTabBarIcon source={images[`SettingsInactive`]} />
-        <Text style={{ ...typography.subtitle2, color: palette.textWhiteMuted }}>
-          Logout
-        </Text>
-      </TouchableOpacity>
     </View>
   </GradientView>
 );
@@ -66,7 +61,6 @@ interface Props {
 
   route: RouteProp<MainCardStackNavigatorParams, Route.SendCoinsConfirm>;
 }
-
 
 
 const onLogoutPress = () => {  

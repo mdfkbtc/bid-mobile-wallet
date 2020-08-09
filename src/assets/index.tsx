@@ -9,6 +9,8 @@ export const images = {
   Settings: require('./images/settings.png'),
   SettingsInactive: require('./images/settingsInactive.png'),
   SettingsActive: require('./images/settingsActive.png'),
+  LogoutInactive: require('./images/logoutInactive.png'),
+  LogoutActive: require('./images/logoutActive.png'),
   success: require('./images/bvWalletIconSuccess.png'),
   dashboardNoWallet: require('./images/bvWalletIconNoCards.png'),
   addressBookNoContacts: require('./images/addressBookNoContacts.png'),

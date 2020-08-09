@@ -8,4 +8,5 @@ export default class NavigationService {
   goBack = () => navigationRef.current?.goBack();
   canGoBack = () => navigationRef.current?.canGoBack();
   reset = (...args) => navigationRef.current?.reset(...args);
+  addListener = (...args) => navigationRef.current?.addListener(...args);
 }
