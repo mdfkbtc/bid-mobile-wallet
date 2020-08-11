@@ -1,7 +1,8 @@
-import { InteractionManager } from 'react-native';
 import * as Watch from 'react-native-watch-connectivity';
-
-const loc = require('./loc');
+import { InteractionManager } from 'react-native';
+import { Chain } from './models/bitcoinUnits';
+import loc, { formatBalance, transactionTimeToReadable } from './loc';
+const notifications = require('./blue_modules/notifications');
 
 export default class WatchConnectivity {
   isAppInstalled = false;
@@ -34,7 +35,7 @@ export default class WatchConnectivity {
               );
               reply({ invoicePaymentRequest: createInvoiceRequest });
             } else if (message.message === 'sendApplicationContext') {
-              await WatchConnectivity.shared.sendWalletsToWatch(WatchConnectivity.shared.wallets);
+              await WatchConnectivity.shared.sendWalletsToWatch();
             } else if (message.message === 'fetchTransactions') {
               await WatchConnectivity.shared.fetchTransactionsFunction();
             }
@@ -51,6 +52,11 @@ export default class WatchConnectivity {
     if (wallet.allowReceive() && amount > 0 && description.trim().length > 0) {
       try {
         const invoiceRequest = await wallet.addInvoice(amount, description);
+
+        // lets decode payreq and subscribe groundcontrol so we can receive push notification when our invoice is paid
+        const decoded = await wallet.decodeInvoice(invoiceRequest);
+        await notifications.tryToObtainPermissions();
+        notifications.majorTomToGroundControl([], [decoded.payment_hash], []);
         return invoiceRequest;
       } catch (error) {
         return error;
@@ -58,11 +64,13 @@ export default class WatchConnectivity {
     }
   }
 
-  async sendWalletsToWatch(allWallets) {
-    if (allWallets === undefined && WatchConnectivity.shared.wallets !== undefined) {
-      allWallets = WatchConnectivity.shared.wallets;
-    }
-    if (allWallets && allWallets.length === 0) {
+  async sendWalletsToWatch() {
+    const allWallets = WatchConnectivity.shared.wallets;
+    if (!Array.isArray(allWallets)) {
+      console.log('No Wallets set to sync with Watch app. Exiting...');
+      return;
+    } else if (allWallets.length === 0) {
+      console.log('Wallets array is set. No Wallets set to sync with Watch app. Exiting...');
       return;
     }
 
@@ -71,18 +79,25 @@ export default class WatchConnectivity {
         const wallets = [];
 
         for (const wallet of allWallets) {
-          let receiveAddress = '';
-          if (wallet.allowReceive()) {
-            if (wallet.getAddressAsync) {
+          let receiveAddress;
+          if (wallet.getAddressAsync) {
+            if (wallet.chain === Chain.ONCHAIN) {
+              try {
+                receiveAddress = await wallet.getAddressAsync();
+              } catch (_) {}
+              if (!receiveAddress) {
+                // either sleep expired or getAddressAsync threw an exception
+                receiveAddress = wallet._getExternalAddressByIndex(wallet.next_free_address_index);
+              }
+            } else if (wallet.chain === Chain.OFFCHAIN) {
               try {
                 await wallet.getAddressAsync();
                 receiveAddress = wallet.getAddress();
-              } catch (error) {
-                console.log(error);
+              } catch (_) {}
+              if (!receiveAddress) {
+                // either sleep expired or getAddressAsync threw an exception
                 receiveAddress = wallet.getAddress();
               }
-            } else {
-              receiveAddress = wallet.getAddress();
             }
           }
           const transactions = wallet.getTransactions(10);
@@ -92,7 +107,7 @@ export default class WatchConnectivity {
             let memo = '';
             let amount = 0;
 
-            if (transaction.hasOwnProperty('confirmations') && !(transaction.confirmations > 0)) {
+            if ('confirmations' in transaction && !(transaction.confirmations > 0)) {
               type = 'pendingConfirmation';
             } else if (transaction.type === 'user_invoice' || transaction.type === 'payment_request') {
               const currentDate = new Date();
@@ -120,48 +135,37 @@ export default class WatchConnectivity {
               const invoiceExpiration = transaction.timestamp + transaction.expire_time;
 
               if (invoiceExpiration > now) {
-                amount = loc.formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
+                amount = formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
               } else if (invoiceExpiration < now) {
                 if (transaction.ispaid) {
-                  amount = loc.formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
+                  amount = formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
                 } else {
                   amount = loc.lnd.expired;
                 }
               } else {
-                amount = loc.formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
+                amount = formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
               }
             } else {
-              amount = loc.formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
+              amount = formatBalance(transaction.value, wallet.getPreferredBalanceUnit(), true).toString();
             }
-            if (
-              WatchConnectivity.shared.tx_metadata[transaction.hash] &&
-              WatchConnectivity.shared.tx_metadata[transaction.hash]['memo']
-            ) {
-              memo = WatchConnectivity.shared.tx_metadata[transaction.hash]['memo'];
+            if (WatchConnectivity.shared.tx_metadata[transaction.hash] && WatchConnectivity.shared.tx_metadata[transaction.hash].memo) {
+              memo = WatchConnectivity.shared.tx_metadata[transaction.hash].memo;
             } else if (transaction.memo) {
               memo = transaction.memo;
             }
-            const watchTX = {
-              type,
-              amount,
-              memo,
-              time: loc.transactionTimeToReadable(transaction.received),
-            };
+            const watchTX = { type, amount, memo, time: transactionTimeToReadable(transaction.received) };
             watchTransactions.push(watchTX);
           }
           wallets.push({
             label: wallet.getLabel(),
-            balance: loc.formatBalance(Number(wallet.getBalance()), wallet.getPreferredBalanceUnit(), true),
+            balance: formatBalance(Number(wallet.getBalance()), wallet.getPreferredBalanceUnit(), true),
             type: wallet.type,
             preferredBalanceUnit: wallet.getPreferredBalanceUnit(),
-            receiveAddress,
+            receiveAddress: receiveAddress,
             transactions: watchTransactions,
           });
         }
-        Watch.updateApplicationContext({
-          wallets,
-          randomID: Math.floor(Math.random() * 11),
-        });
+        Watch.updateApplicationContext({ wallets, randomID: Math.floor(Math.random() * 11) });
         return { wallets };
       }
     });

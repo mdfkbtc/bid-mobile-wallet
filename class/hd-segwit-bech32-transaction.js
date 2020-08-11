@@ -1,10 +1,8 @@
 import { HDSegwitBech32Wallet, SegwitBech32Wallet } from './';
-
-const BigNumber = require('bignumber.js');
 const bitcoin = require('bitcoinjs-lib');
+const BlueElectrum = require('../blue_modules/BlueElectrum');
 const reverse = require('buffer-reverse');
-
-const BlueElectrum = require('../BlueElectrum');
+const BigNumber = require('bignumber.js');
 
 /**
  * Represents transaction of a BIP84 wallet.
@@ -164,21 +162,12 @@ export class HDSegwitBech32Transaction {
     for (const inp of this._txDecoded.ins) {
       let reversedHash = Buffer.from(reverse(inp.hash));
       reversedHash = reversedHash.toString('hex');
-      if (
-        prevTransactions[reversedHash] &&
-        prevTransactions[reversedHash].vout &&
-        prevTransactions[reversedHash].vout[inp.index]
-      ) {
+      if (prevTransactions[reversedHash] && prevTransactions[reversedHash].vout && prevTransactions[reversedHash].vout[inp.index]) {
         let value = prevTransactions[reversedHash].vout[inp.index].value;
         value = new BigNumber(value).multipliedBy(100000000).toNumber();
         wentIn += value;
         const address = SegwitBech32Wallet.witnessToAddress(inp.witness[inp.witness.length - 1]);
-        utxos.push({
-          vout: inp.index,
-          value,
-          txId: reversedHash,
-          address,
-        });
+        utxos.push({ vout: inp.index, value: value, txId: reversedHash, address: address });
       }
     }
 
@@ -203,7 +192,7 @@ export class HDSegwitBech32Transaction {
         changeAmount += value;
       } else {
         // this is target
-        targets.push({ value, address });
+        targets.push({ value: value, address: address });
       }
     }
 
@@ -215,9 +204,9 @@ export class HDSegwitBech32Transaction {
       if (this._wallet.weOwnAddress(address)) {
         unconfirmedUtxos.push({
           vout: outp.n,
-          value,
+          value: value,
           txId: this._txid || this._txDecoded.getId(),
-          address,
+          address: address,
         });
       }
     }
@@ -258,7 +247,7 @@ export class HDSegwitBech32Transaction {
     const { feeRate, utxos } = await this.getInfo();
 
     if (newFeerate <= feeRate) throw new Error('New feerate should be bigger than the old one');
-    const myAddress = await this._wallet.getAddressForTransaction();
+    const myAddress = await this._wallet.getChangeAddressAsync();
 
     return this._wallet.createTransaction(
       utxos,
@@ -283,7 +272,7 @@ export class HDSegwitBech32Transaction {
     const { feeRate, targets, changeAmount, utxos } = await this.getInfo();
 
     if (newFeerate <= feeRate) throw new Error('New feerate should be bigger than the old one');
-    const myAddress = await this._wallet.getAddressForTransaction();
+    const myAddress = await this._wallet.getChangeAddressAsync();
 
     if (changeAmount === 0) delete targets[0].value;
     // looks like this was sendMAX transaction (because there was no change), so we cant reuse amount in this
@@ -292,7 +281,7 @@ export class HDSegwitBech32Transaction {
     if (targets.length === 0) {
       // looks like this was cancelled tx with single change output, so it wasnt included in `this.getInfo()` targets
       // so we add output paying ourselves:
-      targets.push({ address: this._wallet.getAddressForTransaction() });
+      targets.push({ address: this._wallet._getInternalAddressByIndex(this._wallet.next_free_change_address_index) });
       // not checking emptiness on purpose: it could unpredictably generate too far address because of unconfirmed tx.
     }
 
@@ -313,7 +302,7 @@ export class HDSegwitBech32Transaction {
     const { feeRate, fee: oldFee, unconfirmedUtxos } = await this.getInfo();
 
     if (newFeerate <= feeRate) throw new Error('New feerate should be bigger than the old one');
-    const myAddress = await this._wallet.getAddressForTransaction();
+    const myAddress = await this._wallet.getChangeAddressAsync();
 
     // calculating feerate for CPFP tx so that average between current and CPFP tx will equal newFeerate.
     // this works well if both txs are +/- equal size in bytes

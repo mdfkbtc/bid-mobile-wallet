@@ -1,57 +1,22 @@
-import 'react-native-gesture-handler';
-
-import 'intl';
-import 'intl/locale-data/jsonp/en';
+import React, { useEffect } from 'react';
 import './shim.js';
-
-import React from 'react';
-import { AppRegistry, StatusBar } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
-
+import { AppRegistry, YellowBox } from 'react-native';
 import App from './App';
-import WalletMigrate from './walletMigrate';
+YellowBox.ignoreWarnings(['Require cycle', 'Non-serializable values were', "Can't perform a React state update", '{"code":404']);
+
+const A = require('./blue_modules/analytics');
 
 if (!Error.captureStackTrace) {
   // captureStackTrace is only available when debugging
   Error.captureStackTrace = () => {};
 }
 
-class BlueAppComponent extends React.Component {
-  state = {
-    isMigratingData: true,
-  };
+const BlueAppComponent = () => {
+  useEffect(() => {
+    A(A.ENUM.INIT);
+  }, []);
 
-  componentDidMount() {
-    const walletMigrate = new WalletMigrate(this.setIsMigratingData);
+  return <App />;
+};
 
-    walletMigrate.start();
-  }
-
-  setIsMigratingData = async () => {
-    SplashScreen.hide();
-    this.setState({
-      isMigratingData: false,
-    });
-  };
-
-  onSuccessfullyAuthenticated = () => {
-    this.setState({
-      successfullyAuthenticated: true,
-    });
-  };
-
-  render() {
-    if (this.state.isMigratingData) {
-      return null;
-    } else {
-      return (
-        <>
-          <StatusBar backgroundColor="rgba(0,0,0,0)" translucent />
-          <App />
-        </>
-      );
-    }
-  }
-}
-
-AppRegistry.registerComponent('BlockIdCoinWallet', () => BlueAppComponent);
+AppRegistry.registerComponent('BlueWallet', () => BlueAppComponent);

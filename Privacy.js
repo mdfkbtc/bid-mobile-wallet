@@ -1,6 +1,5 @@
-import { Platform } from 'react-native';
 import Obscure from 'react-native-obscure';
-
+import { Platform } from 'react-native';
 const PrivacySnapshot = require('react-native-privacy-snapshot');
 
 export default class Privacy {

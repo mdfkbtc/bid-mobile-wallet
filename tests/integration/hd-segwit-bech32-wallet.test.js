@@ -1,16 +1,15 @@
 /* global it, describe, jasmine, afterAll, beforeAll */
 import { HDSegwitBech32Wallet } from '../../class';
-
-global.crypto = require('crypto'); // shall be used by tests under nodejs CLI, but not in RN environment
 const assert = require('assert');
-
 global.net = require('net'); // needed by Electrum client. For RN it is proviced in shim.js
-const BlueElectrum = require('../../BlueElectrum'); // so it connects ASAP
+global.tls = require('tls'); // needed by Electrum client. For RN it is proviced in shim.js
+const BlueElectrum = require('../../blue_modules/BlueElectrum'); // so it connects ASAP
+
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 300 * 1000;
 
 afterAll(async () => {
   // after all tests we close socket so the test suite can actually terminate
   BlueElectrum.forceDisconnect();
-  return new Promise(resolve => setTimeout(resolve, 10000)); // simple sleep to wait for all timeouts termination
 });
 
 beforeAll(async () => {
@@ -20,43 +19,12 @@ beforeAll(async () => {
 });
 
 describe('Bech32 Segwit HD (BIP84)', () => {
-  it('can create', async function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 30 * 1000;
-    const mnemonic = 'abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about';
-    const hd = new HDSegwitBech32Wallet();
-    await hd.setSecret(mnemonic);
-
-    assert.strictEqual(true, hd.validateMnemonic());
-
-    assert.strictEqual(
-      'zpub6qV8gC8H2NR4zcdP5rvnTpY7xZw3H3Samf8XuoeJdKDvF4UCJzeaj7DjwSYdj5A6wdmt6qVHqbnonjQXZA56Ecs1QTe4ug6gPRBwYnMiW2s',
-      await hd.getXpub(),
-    );
-
-    assert.strictEqual(await hd._getWIFByIndex(0), 'KwLAKpr3t88u6E6CEQT6Qb2Q9ZJ6RJzoxc4Z2Gx6ALxwgAgaqfEn');
-    assert.strictEqual(await hd._getWIFByIndex(1), 'L4CRAA2JrVuivLTLQc4A2g2Nnu7Xjhnnh8jCEzJaP739C9hWqXux');
-    assert.strictEqual(await hd._getWIFByIndex(2), 'KxNUq8mMoo14fVGgG3EqyYjMMAPAvKZVTqhNFfS2AAeka8LRSPWr');
-    assert.ok((await hd._getWIFByIndex(0)) !== (await hd._getWIFByIndex(1)));
-
-    assert.strictEqual(hd.getAddress()[0], 'royale1qs79r2xk6nhr8ce9ae6rexrtprms3cr7yggm3dt');
-    assert.strictEqual(hd.getAddress()[1], 'royale1q6ur0znmd0ux9tj5h66h9jhpzjv7ahpjhxu8z7z');
-    assert.strictEqual(hd.getAddress()[2], 'royale1qjk9php9jn577926wu9sqgnwz9whj2sea68dejp');
-
-    assert.strictEqual(hd._getDerivationPathByAddress(hd.getAddress()[1]), "m/84'/0'/0'/0/1");
-    assert.strictEqual(hd._getDerivationPathByAddress(hd.getAddress()[0]), "m/84'/0'/0'/0/0");
-
-    assert.ok(hd._lastBalanceFetch === 0);
-    await hd.fetchBalance();
-    assert.strictEqual(hd.getBalance(), 0);
-    assert.ok(hd._lastBalanceFetch > 0);
-  });
-
-  it('can fetch balance', async function() {
+  it('can fetch balance, transactions & utxo', async function () {
     if (!process.env.HD_MNEMONIC) {
       console.error('process.env.HD_MNEMONIC not set, skipped');
       return;
     }
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90 * 1000;
+
     let hd = new HDSegwitBech32Wallet();
     hd.setSecret(process.env.HD_MNEMONIC);
     assert.ok(hd.validateMnemonic());
@@ -71,37 +39,19 @@ describe('Bech32 Segwit HD (BIP84)', () => {
     assert.strictEqual(hd._getInternalAddressByIndex(0), 'bc1qcg6e26vtzja0h8up5w2m7utex0fsu4v0e0e7uy');
     assert.strictEqual(hd._getInternalAddressByIndex(1), 'bc1qwp58x4c9e5cplsnw5096qzdkae036ug7a34x3r');
 
+    assert.strictEqual(hd.timeToRefreshBalance(), true);
+    assert.ok(hd._lastTxFetch === 0);
+    assert.ok(hd._lastBalanceFetch === 0);
+
     await hd.fetchBalance();
     assert.strictEqual(hd.getBalance(), 200000);
     assert.strictEqual(await hd.getAddressAsync(), hd._getExternalAddressByIndex(2));
     assert.strictEqual(await hd.getChangeAddressAsync(), hd._getInternalAddressByIndex(2));
     assert.strictEqual(hd.next_free_address_index, 2);
+    assert.strictEqual(hd.getNextFreeAddressIndex(), 2);
     assert.strictEqual(hd.next_free_change_address_index, 2);
 
-    // now, reset HD wallet, and find free addresses from scratch:
-    hd = new HDSegwitBech32Wallet();
-    hd.setSecret(process.env.HD_MNEMONIC);
-
-    assert.strictEqual(await hd.getAddressAsync(), hd._getExternalAddressByIndex(2));
-    assert.strictEqual(await hd.getChangeAddressAsync(), hd._getInternalAddressByIndex(2));
-    assert.strictEqual(hd.next_free_address_index, 2);
-    assert.strictEqual(hd.next_free_change_address_index, 2);
-  });
-
-  it('can fetch transactions', async function() {
-    if (!process.env.HD_MNEMONIC) {
-      console.error('process.env.HD_MNEMONIC not set, skipped');
-      return;
-    }
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90 * 1000;
-    const hd = new HDSegwitBech32Wallet();
-    hd.setSecret(process.env.HD_MNEMONIC);
-    assert.ok(hd.validateMnemonic());
-
-    assert.strictEqual(hd.timeToRefreshBalance(), true);
-    assert.ok(hd._lastTxFetch === 0);
-    assert.ok(hd._lastBalanceFetch === 0);
-    await hd.fetchBalance();
+    // now fetch txs
     await hd.fetchTransactions();
     assert.ok(hd._lastTxFetch > 0);
     assert.ok(hd._lastBalanceFetch > 0);
@@ -114,19 +64,8 @@ describe('Bech32 Segwit HD (BIP84)', () => {
       assert.ok(tx.received);
       assert.ok(tx.confirmations > 1);
     }
-  });
 
-  it('can fetch UTXO', async () => {
-    if (!process.env.HD_MNEMONIC) {
-      console.error('process.env.HD_MNEMONIC not set, skipped');
-      return;
-    }
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90 * 1000;
-    const hd = new HDSegwitBech32Wallet();
-    hd.setSecret(process.env.HD_MNEMONIC);
-    assert.ok(hd.validateMnemonic());
-
-    await hd.fetchBalance();
+    // now fetch UTXO
     await hd.fetchUtxo();
     const utxo = hd.getUtxo();
     assert.strictEqual(utxo.length, 4);
@@ -134,45 +73,58 @@ describe('Bech32 Segwit HD (BIP84)', () => {
     assert.ok(utxo[0].vout === 0 || utxo[0].vout === 1);
     assert.ok(utxo[0].value);
     assert.ok(utxo[0].address);
+
+    // now, reset HD wallet, and find free addresses from scratch:
+    hd = new HDSegwitBech32Wallet();
+    hd.setSecret(process.env.HD_MNEMONIC);
+
+    assert.strictEqual(await hd.getAddressAsync(), hd._getExternalAddressByIndex(2));
+    assert.strictEqual(await hd.getChangeAddressAsync(), hd._getInternalAddressByIndex(2));
+    assert.strictEqual(hd.next_free_address_index, 2);
+    assert.strictEqual(hd.getNextFreeAddressIndex(), 2);
+    assert.strictEqual(hd.next_free_change_address_index, 2);
   });
 
-  xit('can generate addresses only via zpub', function() {
-    const zpub =
-      'zpub6qV8gC8H2NR4zcdP5rvnTpY7xZw3H3Samf8XuoeJdKDvF4UCJzeaj7DjwSYdj5A6wdmt6qVHqbnonjQXZA56Ecs1QTe4ug6gPRBwYnMiW2s';
-    const hd = new HDSegwitBech32Wallet();
-    hd._xpub = zpub;
-    hd.generateAddresses();
-    assert.strictEqual(hd.getAddress()[0], 'royale1qs79r2xk6nhr8ce9ae6rexrtprms3cr7yggm3dt');
-    assert.strictEqual(hd.getAddress()[1], 'royale1q6ur0znmd0ux9tj5h66h9jhpzjv7ahpjhxu8z7z');
-    assert.strictEqual(hd.getAddress()[2], 'royale1qjk9php9jn577926wu9sqgnwz9whj2sea68dejp');
-    assert.ok(hd._getInternalAddressByIndex(0) !== hd._getInternalAddressByIndex(1));
-  });
-
-  it('can generate', async () => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
-    const hd = new HDSegwitBech32Wallet();
-    const hashmap = {};
-    for (let c = 0; c < 10; c++) {
-      await hd.generate();
-      const secret = hd.getSecret();
-      if (hashmap[secret]) {
-        throw new Error('Duplicate secret generated!');
-      }
-      hashmap[secret] = 1;
-      assert.ok(secret.split(' ').length === 12 || secret.split(' ').length === 24);
+  it('can catch up with externally modified wallet', async () => {
+    if (!process.env.HD_MNEMONIC_BIP84) {
+      console.error('process.env.HD_MNEMONIC_BIP84 not set, skipped');
+      return;
     }
+    const hd = new HDSegwitBech32Wallet();
+    hd.setSecret(process.env.HD_MNEMONIC_BIP84);
+    assert.ok(hd.validateMnemonic());
 
-    const hd2 = new HDSegwitBech32Wallet();
-    hd2.setSecret(hd.getSecret());
-    assert.ok(hd2.validateMnemonic());
+    await hd.fetchBalance();
+    const oldBalance = hd.getBalance();
+
+    await hd.fetchTransactions();
+    const oldTransactions = hd.getTransactions();
+
+    // now, mess with internal state, make it 'obsolete'
+
+    hd._txs_by_external_index['2'].pop();
+    hd._txs_by_internal_index['16'].pop();
+    hd._txs_by_internal_index['17'] = [];
+
+    for (let c = 17; c < 100; c++) hd._balances_by_internal_index[c] = { c: 0, u: 0 };
+    hd._balances_by_external_index['2'].c = 1000000;
+
+    assert.ok(hd.getBalance() !== oldBalance);
+    assert.ok(hd.getTransactions().length !== oldTransactions.length);
+
+    // now, refetch! should get back to normal
+
+    await hd.fetchBalance();
+    assert.strictEqual(hd.getBalance(), oldBalance);
+    await hd.fetchTransactions();
+    assert.strictEqual(hd.getTransactions().length, oldTransactions.length);
   });
 
-  it('can work with fauty zpub', async () => {
+  it('can work with faulty zpub', async () => {
     if (!process.env.FAULTY_ZPUB) {
       console.error('process.env.FAULTY_ZPUB not set, skipped');
       return;
     }
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90 * 1000;
     const hd = new HDSegwitBech32Wallet();
     hd._xpub = process.env.FAULTY_ZPUB;
 
@@ -187,7 +139,6 @@ describe('Bech32 Segwit HD (BIP84)', () => {
       console.error('process.env.HD_MNEMONIC_BIP84 not set, skipped');
       return;
     }
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 90 * 1000;
     const hd = new HDSegwitBech32Wallet();
     hd.setSecret(process.env.HD_MNEMONIC_BIP84);
     assert.ok(hd.validateMnemonic());
@@ -203,6 +154,7 @@ describe('Bech32 Segwit HD (BIP84)', () => {
 
     assert.ok(hd.next_free_change_address_index > 0);
     assert.ok(hd.next_free_address_index > 0);
+    assert.ok(hd.getNextFreeAddressIndex() > 0);
 
     start = +new Date();
     await hd.fetchTransactions();
@@ -247,6 +199,15 @@ describe('Bech32 Segwit HD (BIP84)', () => {
     assert.strictEqual(txFound, 4);
 
     await hd.fetchUtxo();
+    assert.strictEqual(hd.getUtxo().length, 2);
+    assert.strictEqual(hd.getDerivedUtxoFromOurTransaction().length, 2);
+    const u1 = hd.getUtxo()[0];
+    const u2 = hd.getDerivedUtxoFromOurTransaction()[0];
+    delete u1.confirmations;
+    delete u2.confirmations;
+    delete u1.height;
+    delete u2.height;
+    assert.deepStrictEqual(u1, u2);
     const changeAddress = await hd.getChangeAddressAsync();
     assert.ok(changeAddress && changeAddress.startsWith('bc1'));
 
@@ -272,5 +233,20 @@ describe('Bech32 Segwit HD (BIP84)', () => {
 
     assert.strictEqual(totalInput - totalOutput, fee);
     assert.strictEqual(outputs[outputs.length - 1].address, changeAddress);
+  });
+
+  it('wasEverUsed() works', async () => {
+    if (!process.env.HD_MNEMONIC) {
+      console.error('process.env.HD_MNEMONIC not set, skipped');
+      return;
+    }
+
+    let hd = new HDSegwitBech32Wallet();
+    hd.setSecret(process.env.HD_MNEMONIC);
+    assert.ok(await hd.wasEverUsed());
+
+    hd = new HDSegwitBech32Wallet();
+    await hd.generate();
+    assert.ok(!(await hd.wasEverUsed()), hd.getSecret());
   });
 });

@@ -1,1 +1,1 @@
-BlockIdCoinWallet - Bitcoin wallet
+BlueWallet - Carteira Bitcoin

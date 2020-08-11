@@ -1,1 +1,1 @@
-BlockIdCoinWallet - Биткоин кошелек
+BlueWallet - Биткоин кошелек

@@ -1,8 +1,8 @@
+/* global alert */
 import AsyncStorage from '@react-native-community/async-storage';
 import RNSecureKeyStore, { ACCESSIBLE } from 'react-native-secure-key-store';
-
-import WatchConnectivity from '../WatchConnectivity';
 import {
+  HDLegacyBreadwalletWallet,
   HDSegwitP2SHWallet,
   HDLegacyP2PKHWallet,
   WatchOnlyWallet,
@@ -10,10 +10,14 @@ import {
   SegwitP2SHWallet,
   SegwitBech32Wallet,
   HDSegwitBech32Wallet,
+  PlaceholderWallet,
+  LightningCustodianWallet,
+  HDLegacyElectrumSeedP2PKHWallet,
+  HDSegwitElectrumSeedP2WPKHWallet,
 } from './';
-import DeviceQuickActions from './quickActions';
-
-const encryption = require('../encryption');
+import WatchConnectivity from '../WatchConnectivity';
+import DeviceQuickActions from './quick-actions';
+const encryption = require('../blue_modules/encryption');
 
 export class AppStorage {
   static FLAG_ENCRYPTED = 'data_encrypted';
@@ -22,40 +26,19 @@ export class AppStorage {
   static LNDHUB = 'lndhub';
   static ELECTRUM_HOST = 'electrum_host';
   static ELECTRUM_TCP_PORT = 'electrum_tcp_port';
+  static ELECTRUM_SSL_PORT = 'electrum_ssl_port';
   static PREFERRED_CURRENCY = 'preferredCurrency';
   static ADVANCED_MODE_ENABLED = 'advancedmodeenabled';
+  static DELETE_WALLET_AFTER_UNINSTALL = 'deleteWalletAfterUninstall';
+  static HODL_HODL_API_KEY = 'HODL_HODL_API_KEY';
+  static HODL_HODL_SIGNATURE_KEY = 'HODL_HODL_SIGNATURE_KEY';
+  static HODL_HODL_CONTRACTS = 'HODL_HODL_CONTRACTS';
 
   constructor() {
     /** {Array.<AbstractWallet>} */
     this.wallets = [];
     this.tx_metadata = {};
     this.cachedPassword = false;
-    this.settings = {
-      brandingColor: '#ffffff',
-      foregroundColor: '#0c2550',
-      buttonBackgroundColor: '#ccddf9',
-      buttonTextColor: '#0c2550',
-      buttonAlternativeTextColor: '#2f5fb3',
-      buttonDisabledBackgroundColor: '#eef0f4',
-      buttonDisabledTextColor: '#9aa0aa',
-      inputBorderColor: '#d2d2d2',
-      inputBackgroundColor: '#f5f5f5',
-      alternativeTextColor: '#9aa0aa',
-      alternativeTextColor2: '#0f5cc0',
-      buttonBlueBackgroundColor: '#ccddf9',
-      incomingBackgroundColor: '#d2f8d6',
-      incomingForegroundColor: '#37c0a1',
-      outgoingBackgroundColor: '#f8d2d2',
-      outgoingForegroundColor: '#d0021b',
-      successColor: '#37c0a1',
-      failedColor: '#ff0000',
-      shadowColor: '#000000',
-      inverseForegroundColor: '#ffffff',
-      hdborderColor: '#68BBE1',
-      hdbackgroundColor: '#ECF9FF',
-      lnborderColor: '#F7C056',
-      lnbackgroundColor: '#FFFAEF',
-    };
   }
 
   /**
@@ -68,9 +51,7 @@ export class AppStorage {
    */
   setItem(key, value) {
     if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
-      return RNSecureKeyStore.set(key, value, {
-        accessible: ACCESSIBLE.WHEN_UNLOCKED,
-      });
+      return RNSecureKeyStore.set(key, value, { accessible: ACCESSIBLE.WHEN_UNLOCKED });
     } else {
       return AsyncStorage.setItem(key, value);
     }
@@ -91,6 +72,15 @@ export class AppStorage {
     }
   }
 
+  async setResetOnAppUninstallTo(value) {
+    await this.setItem(AppStorage.DELETE_WALLET_AFTER_UNINSTALL, value ? '1' : '');
+    try {
+      RNSecureKeyStore.setResetOnAppUninstallTo(value);
+    } catch (Error) {
+      console.warn(Error);
+    }
+  }
+
   async storageIsEncrypted() {
     let data;
     try {
@@ -102,12 +92,23 @@ export class AppStorage {
     return !!data;
   }
 
+  async isPasswordInUse(password) {
+    try {
+      let data = await this.getItem('data');
+      data = this.decryptData(data, password);
+      return !!data;
+    } catch (_e) {
+      return false;
+    }
+  }
+
   /**
    * Iterates through all values of `data` trying to
    * decrypt each one, and returns first one successfully decrypted
    *
-   * @param data String (serialized array)
+   * @param data {string} Serialized array
    * @param password
+   * @returns {boolean|string} Either STRING of storage data (which is stringified JSON) or FALSE, which means failure
    */
   decryptData(data, password) {
     data = JSON.parse(data);
@@ -125,6 +126,29 @@ export class AppStorage {
     }
 
     return false;
+  }
+
+  async decryptStorage(password) {
+    if (password === this.cachedPassword) {
+      this.cachedPassword = undefined;
+      await this.setResetOnAppUninstallTo(true);
+      await this.saveToDisk();
+      this.wallets = [];
+      this.tx_metadata = [];
+      return this.loadFromDisk();
+    } else {
+      throw new Error('Wrong password. Please, try again.');
+    }
+  }
+
+  async isDeleteWalletAfterUninstallEnabled() {
+    let deleteWalletsAfterUninstall;
+    try {
+      deleteWalletsAfterUninstall = await this.getItem(AppStorage.DELETE_WALLET_AFTER_UNINSTALL);
+    } catch (_e) {
+      deleteWalletsAfterUninstall = true;
+    }
+    return !!deleteWalletsAfterUninstall;
   }
 
   async encryptStorage(password) {
@@ -194,6 +218,8 @@ export class AppStorage {
           const tempObj = JSON.parse(key);
           let unserializedWallet;
           switch (tempObj.type) {
+            case PlaceholderWallet.type:
+              continue;
             case SegwitBech32Wallet.type:
               unserializedWallet = SegwitBech32Wallet.fromJson(key);
               break;
@@ -203,6 +229,9 @@ export class AppStorage {
             case WatchOnlyWallet.type:
               unserializedWallet = WatchOnlyWallet.fromJson(key);
               unserializedWallet.init();
+              if (unserializedWallet.isHd() && !unserializedWallet.isXpubValid()) {
+                continue;
+              }
               break;
             case HDLegacyP2PKHWallet.type:
               unserializedWallet = HDLegacyP2PKHWallet.fromJson(key);
@@ -213,6 +242,38 @@ export class AppStorage {
             case HDSegwitBech32Wallet.type:
               unserializedWallet = HDSegwitBech32Wallet.fromJson(key);
               break;
+            case HDLegacyBreadwalletWallet.type:
+              unserializedWallet = HDLegacyBreadwalletWallet.fromJson(key);
+              break;
+            case HDLegacyElectrumSeedP2PKHWallet.type:
+              unserializedWallet = HDLegacyElectrumSeedP2PKHWallet.fromJson(key);
+              break;
+            case HDSegwitElectrumSeedP2WPKHWallet.type:
+              unserializedWallet = HDSegwitElectrumSeedP2WPKHWallet.fromJson(key);
+              break;
+            case LightningCustodianWallet.type: {
+              /** @type {LightningCustodianWallet} */
+              unserializedWallet = LightningCustodianWallet.fromJson(key);
+              let lndhub = false;
+              try {
+                lndhub = await AsyncStorage.getItem(AppStorage.LNDHUB);
+              } catch (Error) {
+                console.warn(Error);
+              }
+
+              if (unserializedWallet.baseURI) {
+                unserializedWallet.setBaseURI(unserializedWallet.baseURI); // not really necessary, just for the sake of readability
+                console.log('using saved uri for for ln wallet:', unserializedWallet.baseURI);
+              } else if (lndhub) {
+                console.log('using wallet-wide settings ', lndhub, 'for ln wallet');
+                unserializedWallet.setBaseURI(lndhub);
+              } else {
+                console.log('using default', LightningCustodianWallet.defaultBaseUri, 'for ln wallet');
+                unserializedWallet.setBaseURI(LightningCustodianWallet.defaultBaseUri);
+              }
+              unserializedWallet.init();
+              break;
+            }
             case LegacyWallet.type:
             default:
               unserializedWallet = LegacyWallet.fromJson(key);
@@ -230,9 +291,16 @@ export class AppStorage {
           await this.fetchWalletTransactions();
           await this.saveToDisk();
         };
-        await WatchConnectivity.shared.sendWalletsToWatch(this.wallets);
-        DeviceQuickActions.setWallets(this.wallets);
-        DeviceQuickActions.setQuickActions();
+        await WatchConnectivity.shared.sendWalletsToWatch();
+
+        const isStorageEncrypted = await this.storageIsEncrypted();
+        if (isStorageEncrypted) {
+          DeviceQuickActions.clearShortcutItems();
+          DeviceQuickActions.removeAllWallets();
+        } else {
+          DeviceQuickActions.setWallets(this.wallets);
+          DeviceQuickActions.setQuickActions();
+        }
         return true;
       } else {
         return false; // failed loading data or loading/decryptin data
@@ -275,11 +343,10 @@ export class AppStorage {
   async saveToDisk() {
     const walletsToSave = [];
     for (const key of this.wallets) {
-      if (typeof key === 'boolean') continue;
+      if (typeof key === 'boolean' || key.type === PlaceholderWallet.type) continue;
       if (key.prepareForSerialization) key.prepareForSerialization();
       walletsToSave.push(JSON.stringify({ ...key, type: key.type }));
     }
-
     let data = {
       wallets: walletsToSave,
       tx_metadata: this.tx_metadata,
@@ -311,7 +378,11 @@ export class AppStorage {
     WatchConnectivity.shared.sendWalletsToWatch();
     DeviceQuickActions.setWallets(this.wallets);
     DeviceQuickActions.setQuickActions();
-    return this.setItem('data', JSON.stringify(data));
+    try {
+      return await this.setItem('data', JSON.stringify(data));
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   /**
@@ -323,16 +394,16 @@ export class AppStorage {
    * @return {Promise.<void>}
    */
   async fetchWalletBalances(index) {
-    console.log('fetchWalletBalances for wallet#', index);
+    console.log('fetchWalletBalances for wallet#', typeof index === 'undefined' ? '(all)' : index);
     if (index || index === 0) {
       let c = 0;
-      for (const wallet of this.wallets) {
+      for (const wallet of this.wallets.filter(wallet => wallet.type !== PlaceholderWallet.type)) {
         if (c++ === index) {
           await wallet.fetchBalance();
         }
       }
     } else {
-      for (const wallet of this.wallets) {
+      for (const wallet of this.wallets.filter(wallet => wallet.type !== PlaceholderWallet.type)) {
         await wallet.fetchBalance();
       }
     }
@@ -344,15 +415,15 @@ export class AppStorage {
    * To access transactions - get them from each respective wallet.
    * If index is present then fetch only from this specific wallet.
    *
-   * @param index {Integer=} Index of the wallet in this.wallets array,
+   * @param index {Integer} Index of the wallet in this.wallets array,
    *                        blank to fetch from all wallets
    * @return {Promise.<void>}
    */
   async fetchWalletTransactions(index) {
-    console.log('fetchWalletTransactions for wallet#', index);
+    console.log('fetchWalletTransactions for wallet#', typeof index === 'undefined' ? '(all)' : index);
     if (index || index === 0) {
       let c = 0;
-      for (const wallet of this.wallets) {
+      for (const wallet of this.wallets.filter(wallet => wallet.type !== PlaceholderWallet.type)) {
         if (c++ === index) {
           await wallet.fetchTransactions();
           if (wallet.fetchPendingTransactions) {
@@ -390,9 +461,10 @@ export class AppStorage {
    *
    * @param index {Integer|null} Wallet index in this.wallets. Empty (or null) for all wallets.
    * @param limit {Integer} How many txs return, starting from the earliest. Default: all of them.
+   * @param includeWalletsWithHideTransactionsEnabled {Boolean} Wallets' _hideTransactionsInWalletsList property determines wether the user wants this wallet's txs hidden from the main list view.
    * @return {Array}
    */
-  getTransactions(index, limit = Infinity) {
+  getTransactions(index, limit = Infinity, includeWalletsWithHideTransactionsEnabled = false) {
     if (index || index === 0) {
       let txs = [];
       let c = 0;
@@ -405,7 +477,7 @@ export class AppStorage {
     }
 
     let txs = [];
-    for (const wallet of this.wallets) {
+    for (const wallet of this.wallets.filter(w => includeWalletsWithHideTransactionsEnabled || !w.getHideTransactionsInWalletsList())) {
       const walletTransactions = wallet.getTransactions();
       for (const t of walletTransactions) {
         t.walletPreferredBalanceUnit = wallet.getPreferredBalanceUnit();
@@ -418,7 +490,7 @@ export class AppStorage {
     }
 
     return txs
-      .sort(function(a, b) {
+      .sort(function (a, b) {
         return b.sort_ts - a.sort_ts;
       })
       .slice(0, limit);
@@ -435,6 +507,62 @@ export class AppStorage {
       finalBalance += wal.getBalance();
     }
     return finalBalance;
+  }
+
+  async getHodlHodlApiKey() {
+    try {
+      return await this.getItem(AppStorage.HODL_HODL_API_KEY);
+    } catch (_) {}
+    return false;
+  }
+
+  async getHodlHodlSignatureKey() {
+    try {
+      return await this.getItem(AppStorage.HODL_HODL_SIGNATURE_KEY);
+    } catch (_) {}
+    return false;
+  }
+
+  /**
+   * Since we cant fetch list of contracts from hodlhodl api yet, we have to keep track of it ourselves
+   *
+   * @returns {Promise<string[]>} String ids of contracts in an array
+   */
+  async getHodlHodlContracts() {
+    try {
+      const json = await this.getItem(AppStorage.HODL_HODL_CONTRACTS);
+      return JSON.parse(json);
+    } catch (_) {}
+    return [];
+  }
+
+  async addHodlHodlContract(id) {
+    let json;
+    try {
+      json = await this.getItem(AppStorage.HODL_HODL_CONTRACTS);
+      json = JSON.parse(json);
+    } catch (_) {
+      json = [];
+    }
+
+    json.push(id);
+    return this.setItem(AppStorage.HODL_HODL_CONTRACTS, JSON.stringify(json));
+  }
+
+  async setHodlHodlApiKey(key, sigKey) {
+    if (sigKey) await this.setItem(AppStorage.HODL_HODL_SIGNATURE_KEY, sigKey);
+    return this.setItem(AppStorage.HODL_HODL_API_KEY, key);
+  }
+
+  async isAdancedModeEnabled() {
+    try {
+      return !!(await this.getItem(AppStorage.ADVANCED_MODE_ENABLED));
+    } catch (_) {}
+    return false;
+  }
+
+  async setIsAdancedModeEnabled(value) {
+    await this.setItem(AppStorage.ADVANCED_MODE_ENABLED, value ? '1' : '');
   }
 
   /**
