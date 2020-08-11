@@ -219,20 +219,6 @@ export default class WalletsAdd extends Component {
               }}
               style={styles.button}
             />
-            <View style={styles.or}>
-              <BlueTextCentered style={styles.orCenter}>{loc.wallets.add_or}</BlueTextCentered>
-            </View>
-            <LightningButton
-              active={this.state.activeLightning}
-              onPress={() => {
-                Keyboard.dismiss();
-                this.setState({
-                  activeBitcoin: false,
-                  activeLightning: true,
-                });
-              }}
-              style={styles.button}
-            />
           </View>
 
           <View style={styles.advanced}>
