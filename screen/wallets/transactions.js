@@ -666,18 +666,6 @@ export default class WalletTransactions extends Component {
                 </Text>
                 {this.isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
 
-                {!this.isLightning() && (
-                  <TouchableOpacity
-                    onPress={() =>
-                      this.props.navigation.navigate('BuyBitcoin', {
-                        wallet: this.state.wallet,
-                      })
-                    }
-                    style={styles.buyBitcoin}
-                  >
-                    <Text style={styles.buyBitcoinText}>{loc.wallets.list_tap_here_to_buy}</Text>
-                  </TouchableOpacity>
-                )}
               </ScrollView>
             }
             refreshControl={
