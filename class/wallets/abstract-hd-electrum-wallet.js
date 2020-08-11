@@ -823,6 +823,7 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
     }
 
     let psbt = new bitcoin.Psbt();
+    psbt.setVersion(1);
 
     let c = 0;
     const keypairs = {};
