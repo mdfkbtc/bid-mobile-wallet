@@ -1,1 +1,1 @@
-BlueWallet - Bitcoin wallet
+BlockIdWallet - Bitcoin wallet

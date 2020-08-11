@@ -79,7 +79,7 @@ const About = () => {
   };
 
   const handleOnGithubPress = () => {
-    Linking.openURL('https://github.com/BlueWallet/BlueWallet');
+    Linking.openURL('https://github.com/BlockIdWallet/BlockIdWallet');
   };
 
   const handleOnTelegramPress = () => {

@@ -1,10 +1,10 @@
-# BlueWallet - A Bitcoin & Lightning Wallet
+# BlockIdWallet - A Bitcoin & Lightning Wallet
 
-[![GitHub tag](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/BlueWallet/BlueWallet/master/package.json&query=$.version&label=Version)](https://github.com/BlueWallet/BlueWallet)
-[![CircleCI](https://circleci.com/gh/BlueWallet/BlueWallet.svg?style=svg)](https://circleci.com/gh/BlueWallet/BlueWallet)
-[![e2e on master](https://travis-ci.com/BlueWallet/BlueWallet.svg?branch=master)](https://travis-ci.com/BlueWallet/BlueWallet)
+[![GitHub tag](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/BlockIdWallet/BlockIdWallet/master/package.json&query=$.version&label=Version)](https://github.com/BlockIdWallet/BlockIdWallet)
+[![CircleCI](https://circleci.com/gh/BlockIdWallet/BlockIdWallet.svg?style=svg)](https://circleci.com/gh/BlockIdWallet/BlockIdWallet)
+[![e2e on master](https://travis-ci.com/BlockIdWallet/BlockIdWallet.svg?branch=master)](https://travis-ci.com/BlockIdWallet/BlockIdWallet)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-![](https://img.shields.io/github/license/BlueWallet/BlueWallet.svg)
+![](https://img.shields.io/github/license/BlockIdWallet/BlockIdWallet.svg)
 
 Thin Bitcoin Wallet.
 Built with React Native and Electrum.
@@ -39,8 +39,8 @@ node --version && npm --version
 * In your console:
 
 ```
-git clone https://github.com/BlueWallet/BlueWallet.git
-cd BlueWallet
+git clone https://github.com/BlockIdWallet/BlockIdWallet.git
+cd BlockIdWallet
 npm install
 ```
 
@@ -52,7 +52,7 @@ You will now need to either connect an Android device to your computer or run an
 
 1. Download and run Android Studio
 2. Click on "Open an existing Android Studio Project"
-3. Open `build.gradle` file under `BlueWallet/android/` folder
+3. Open `build.gradle` file under `BlockIdWallet/android/` folder
 4. Android Studio will take some time to set things up. Once everything is set up, go to `Tools` -> `AVD Manager`.
     * 📝 This option [may take some time to appear in the menu](https://stackoverflow.com/questions/47173708/why-avd-manager-options-are-not-showing-in-android-studio) if you're opening the project in a freshly-installed version of Android Studio.
 5. Click on "Create Virtual Device..." and go through the steps to create a virtual device
@@ -73,7 +73,7 @@ npx podinstall
 npm start
 ```
 
-In another terminal window within the BlueWallet folder:
+In another terminal window within the BlockIdWallet folder:
 ```
 npx react-native run-ios
 ```
@@ -99,7 +99,7 @@ MIT
 
 ## WANT TO CONTRIBUTE?
 
-Grab an issue from [the backlog](https://github.com/BlueWallet/BlueWallet/projects/1), try to start or submit a PR, any doubts we will try to guide you. Contributors have a private telegram group, request access by email bluewallet@bluewallet.io
+Grab an issue from [the backlog](https://github.com/BlockIdWallet/BlockIdWallet/projects/1), try to start or submit a PR, any doubts we will try to guide you. Contributors have a private telegram group, request access by email bluewallet@bluewallet.io
 
 ## Translations
 
@@ -107,7 +107,7 @@ We accepts translations via [Transifex](https://www.transifex.com/bluewallet/blu
 
 To participate you need to:
 1. Sign up to Transifex
-2. Find BlueWallet project
+2. Find BlockIdWallet project
 3. Send join request
 4. After we accept your request you will be able to start translating! That's it!
 

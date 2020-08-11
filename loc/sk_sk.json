@@ -27,7 +27,7 @@
     "create_fake_storage": "Vytvoriť falošné zašifrované úložisko",
     "create_password": "Vytvoriť heslo",
     "create_password_explanation": "Heslo k falošnému úložisku nesmie byť rovnaké ako heslo k hlavnému úložisku",
-    "help": "Za určitých okolností môžete byť donútení k prezradeniu hesla. K zaisteniu bezpečnosti vaších prostriedkov, BlueWallet môže vytvořiť ďalšie zašifrované úložiská s rozdielným heslom. V prípade potreby môžete toto heslo dať tretej strane. Pokiaľ bude zadané do BlueWallet, odomkne nové \"falošné\" úložisko. Toto bude vyzerať hodnoverne, ale udrží vaše pravé hlavné úložisko v bezpečí.",
+    "help": "Za určitých okolností môžete byť donútení k prezradeniu hesla. K zaisteniu bezpečnosti vaších prostriedkov, BlockIdWallet môže vytvořiť ďalšie zašifrované úložiská s rozdielným heslom. V prípade potreby môžete toto heslo dať tretej strane. Pokiaľ bude zadané do BlockIdWallet, odomkne nové \"falošné\" úložisko. Toto bude vyzerať hodnoverne, ale udrží vaše pravé hlavné úložisko v bezpečí.",
     "help2": "Nové úložisko bude plne funkčné, môžete naň uložiť minimálnu čiastku, aby vyzeralo uveriteľnejšie.",
     "password_should_not_match": "Heslo k falošnému úložisku nesmie byť rovnaké ako heslo k hlavnému úložisku",
     "passwords_do_not_match": "Hesla se nezhodujú, skúste znovu",
@@ -70,7 +70,7 @@
     "success_done": "Hotovo"
   },
   "settings": {
-    "about": "O BlueWallet",
+    "about": "O BlockIdWallet",
     "advanced_options": "Pokročilé nastavenia",
     "currency": "Mena",
     "electrum_settings": "Electrum nastavenia",
@@ -119,7 +119,7 @@
     "export_title": "exportovať peňaženku",
     "import_do_import": "Importovať",
     "import_error": "Chyba pri importe. Prosím uistite sa, že poskytnuté údaje sú správne.",
-    "import_explanation": "Zadajte svoj mnemonic seed, súkromný kľúč, WIF, alebo čokoľvek, čo máte. BlueWallet sa pokúsi uhádnuť správny formát a naimportovať vašu peňaženku",
+    "import_explanation": "Zadajte svoj mnemonic seed, súkromný kľúč, WIF, alebo čokoľvek, čo máte. BlockIdWallet sa pokúsi uhádnuť správny formát a naimportovať vašu peňaženku",
     "import_imported": "Importovaná",
     "import_scan_qr": "alebo radšej naskenovať QR kód?",
     "import_success": "Úspech",

@@ -1,5 +1,5 @@
 platform :ios, '10.0'
-workspace 'BlueWallet'
+workspace 'BlockIdWallet'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 def add_flipper_pods!(versions = {})
@@ -45,7 +45,7 @@ def flipper_post_install(installer)
   end
 end
 
-target 'BlueWallet' do
+target 'BlockIdWallet' do
   # Pods for RnDiffApp
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"

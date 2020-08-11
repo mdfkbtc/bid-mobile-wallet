@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
                BuildableName = "BlueWalletWatch.app"
                BlueprintName = "BlueWalletWatch"
-               ReferencedContainer = "container:BlueWallet.xcodeproj">
+               ReferencedContainer = "container:BlockIdWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "BlueWallet.app"
-               BlueprintName = "BlueWallet"
-               ReferencedContainer = "container:BlueWallet.xcodeproj">
+               BuildableName = "BlockIdWallet.app"
+               BlueprintName = "BlockIdWallet"
+               ReferencedContainer = "container:BlockIdWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
             BuildableName = "BlueWalletWatch.app"
             BlueprintName = "BlueWalletWatch"
-            ReferencedContainer = "container:BlueWallet.xcodeproj">
+            ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -70,13 +70,13 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BlueWallet">
+         RemotePath = "/BlockIdWallet">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
             BuildableName = "BlueWalletWatch.app"
             BlueprintName = "BlueWalletWatch"
-            ReferencedContainer = "container:BlueWallet.xcodeproj">
+            ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
             BuildableName = "BlueWalletWatch.app"
             BlueprintName = "BlueWalletWatch"
-            ReferencedContainer = "container:BlueWallet.xcodeproj">
+            ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -102,13 +102,13 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BlueWallet">
+         RemotePath = "/BlockIdWallet">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
             BuildableName = "BlueWalletWatch.app"
             BlueprintName = "BlueWalletWatch"
-            ReferencedContainer = "container:BlueWallet.xcodeproj">
+            ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
@@ -117,7 +117,7 @@
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
             BuildableName = "BlueWalletWatch.app"
             BlueprintName = "BlueWalletWatch"
-            ReferencedContainer = "container:BlueWallet.xcodeproj">
+            ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

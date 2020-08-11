@@ -1,4 +1,4 @@
-vim ios/BlueWallet/Info.plist
+vim ios/BlockIdWallet/Info.plist
 vim ios/BlueWalletWatch/Info.plist
 vim "ios/BlueWalletWatch Extension/Info.plist"
 vim "ios/TodayExtension/Info.plist"

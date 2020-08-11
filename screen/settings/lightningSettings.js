@@ -87,9 +87,9 @@ const LightningSettings = () => {
           type: 'font-awesome',
           color: colors.foregroundColor,
         }}
-        onPress={() => Linking.openURL('https://github.com/BlueWallet/LndHub')}
+        onPress={() => Linking.openURL('https://github.com/BlockIdWallet/LndHub')}
         titleStyle={{ color: colors.buttonAlternativeTextColor }}
-        title="github.com/BlueWallet/LndHub"
+        title="github.com/BlockIdWallet/LndHub"
         color={colors.buttonTextColor}
         buttonStyle={styles.buttonStyle}
       />

@@ -18,7 +18,7 @@
     "create_fake_storage": "Créer un faux espace de stockage chiffré",
     "create_password": "Créer un mot de passe",
     "create_password_explanation": "Le mot de passe pour le faux espace de stockage ne doit pas être le même que celui du stockage principal",
-    "help": "Dans certaines circonstances, vous serez peut-être forcé par un tiers à communiquer votre mot de passe. Pour protéger vos biens, BlueWallet permet de créer un autre espace de stockage, avec un mot de passe différent. Sous la contrainte, vous pourrez divulger ce mot de passe au tier. Quand il est saisi BlueWallet, débloquera se 'faux' espace de stockage. Le tiers pourra confondre ces données avec des données légitimes, votre espace de stockage principal restera sécurisé et hors d'atteinte.",
+    "help": "Dans certaines circonstances, vous serez peut-être forcé par un tiers à communiquer votre mot de passe. Pour protéger vos biens, BlockIdWallet permet de créer un autre espace de stockage, avec un mot de passe différent. Sous la contrainte, vous pourrez divulger ce mot de passe au tier. Quand il est saisi BlockIdWallet, débloquera se 'faux' espace de stockage. Le tiers pourra confondre ces données avec des données légitimes, votre espace de stockage principal restera sécurisé et hors d'atteinte.",
     "help2": "New storage will be fully functional, and you can store some minimum amounts there so it looks more believable.",
     "password_should_not_match": "Le mot de passe pour le faux espace de stockage ne doit pas être le même que celui du stockage principal",
     "passwords_do_not_match": "Vos mot de passe ne sont pas identiques, veillez ré-essayer",
