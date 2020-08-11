@@ -338,8 +338,7 @@ export default class WalletTransactions extends Component {
 
            */}
           {this.state.wallet.getTransactions().length > 0 &&
-            this.state.wallet.type !== LightningCustodianWallet.type &&
-            this.renderSellFiat()}
+            this.state.wallet.type !== LightningCustodianWallet.type}
           {this.state.wallet.type === LightningCustodianWallet.type && this.renderMarketplaceButton()}
           {this.state.wallet.type === LightningCustodianWallet.type && Platform.OS === 'ios' && this.renderLappBrowserButton()}
         </View>
@@ -385,19 +384,6 @@ export default class WalletTransactions extends Component {
                 );
               }}
               title={loc.lnd.refill_external}
-            />
-
-            <BlueListItem
-              hideChevron
-              component={TouchableOpacity}
-              onPress={a => {
-                this.setState({ isManageFundsModalVisible: false }, async () => {
-                  this.props.navigation.navigate('BuyBitcoin', {
-                    wallet: this.state.wallet,
-                  });
-                });
-              }}
-              title={loc.lnd.refill_card}
             />
 
             <BlueListItem
@@ -459,21 +445,6 @@ export default class WalletTransactions extends Component {
         style={styles.marketplaceButton2}
       >
         <Text style={styles.marketpalceText1}>LApp Browser</Text>
-      </TouchableOpacity>
-    );
-  };
-
-  renderSellFiat = () => {
-    return (
-      <TouchableOpacity
-        onPress={() =>
-          this.props.navigation.navigate('BuyBitcoin', {
-            wallet: this.state.wallet,
-          })
-        }
-        style={styles.marketplaceButton2}
-      >
-        <Text style={styles.marketpalceText1}>{loc.wallets.list_tap_here_to_buy}</Text>
       </TouchableOpacity>
     );
   };
