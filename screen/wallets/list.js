@@ -311,8 +311,8 @@ export default class WalletsList extends Component {
           style={styles.ltRoot}
         >
           <View style={styles.ltTextWrap}>
-            <Text style={styles.ltTextBig}>Local Trader</Text>
-            <Text style={styles.ltTextSmall}>{loc.hodl.p2p}</Text>
+            <Text style={styles.ltTextBig}>P2P Exchange</Text>
+            <Text style={styles.ltTextSmall}>In progress...</Text>
           </View>
           <View style={styles.ltButtonWrap}>
             <Text style={styles.ltButton}>Under Development</Text>
