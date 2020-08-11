@@ -1,1 +1,1 @@
-BlockIdWallet - Bitcoin wallet
+BlockIdWallet - BlockIdCoin wallet

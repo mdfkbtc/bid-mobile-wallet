@@ -249,7 +249,7 @@ export default class TransactionsStatus extends Component {
       <SafeBlueArea forceInset={{ horizontal: 'always' }} style={styles.root}>
         {this.state.isHandOffUseEnabled && (
           <Handoff
-            title={`Bitcoin Transaction ${this.state.tx.hash}`}
+            title={`BlockIdCoin Transaction ${this.state.tx.hash}`}
             type="io.bluewallet.bluewallet"
             url={`https://blockstream.info/tx/${this.state.tx.hash}`}
           />

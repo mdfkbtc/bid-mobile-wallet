@@ -133,7 +133,7 @@
     "list_empty_txs2": "Noch keine Transaktionen",
     "list_empty_txs2_lightning": "\nDrücke zum Starten «Beträge verwalten», um das Wallet zu laden.",
     "list_latest_transaction": "Lezte Transaktion",
-    "list_tap_here_to_buy": "Klicke hier, um Bitcoin zu kaufen",
+    "list_tap_here_to_buy": "Klicke hier, um BlockIdCoin zu kaufen",
     "list_title": "Wallets",
     "reorder_title": "Wallets neu ordnen",
     "select_wallet": "Wähle eine Wallet",

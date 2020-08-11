@@ -607,7 +607,7 @@ export default class WalletTransactions extends Component {
         <StatusBar barStyle="light-content" backgroundColor={WalletGradient.headerColorFor(this.props.route.params.wallet.type)} />
         {this.state.wallet.chain === Chain.ONCHAIN && this.state.isHandOffUseEnabled && (
           <Handoff
-            title={`Bitcoin Wallet ${this.state.wallet.getLabel()}`}
+            title={`BlockIdCoin Wallet ${this.state.wallet.getLabel()}`}
             type="io.bluewallet.bluewallet"
             url={`https://blockpath.com/search/addr?q=${this.state.wallet.getXpub()}`}
           />

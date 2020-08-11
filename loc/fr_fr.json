@@ -101,7 +101,7 @@
     "list_empty_txs1": "Vos transactions apparaîtront ici,",
     "list_empty_txs2": "Aucune pour le moment",
     "list_latest_transaction": "dernière transaction",
-    "list_tap_here_to_buy": "Cliquez ici pour acheter du Bitcoin",
+    "list_tap_here_to_buy": "Cliquez ici pour acheter du BlockIdCoin",
     "list_title": "portefeuilles",
     "reorder_title": "Trier vos portefeuilles",
     "select_wallet": "Choix du portefeuille",

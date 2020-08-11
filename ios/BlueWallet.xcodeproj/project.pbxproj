@@ -22,7 +22,7 @@
 		3271B0AB236E2E0700DA766F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3271B0AA236E2E0700DA766F /* NotificationCenter.framework */; };
 		3271B0AE236E2E0700DA766F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3271B0AD236E2E0700DA766F /* TodayViewController.swift */; };
 		3271B0B1236E2E0700DA766F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3271B0AF236E2E0700DA766F /* MainInterface.storyboard */; };
-		3271B0B5236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3271B0A9236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3271B0B5236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3271B0A9236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3271B0BB236E329400DA766F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3271B0BA236E329400DA766F /* API.swift */; };
 		32B5A32A2334450100F8D608 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5A3292334450100F8D608 /* Bridge.swift */; };
 		32F0A29A2311DBB20095C559 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F0A2992311DBB20095C559 /* ComplicationController.swift */; };
@@ -102,7 +102,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				3271B0B5236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex in Embed App Extensions */,
+				3271B0B5236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,8 +153,8 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FCC2CD6FF4448229D0CE0F3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		32002D9C236FAA9F00B93396 /* TodayDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDataStore.swift; sourceTree = "<group>"; };
-		32475F792370F6D30070E6CF /* BlockIdWallet - Bitcoin Price.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BlockIdWallet - Bitcoin Price.entitlements"; sourceTree = "<group>"; };
-		3271B0A9236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BlockIdWallet - Bitcoin Price.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32475F792370F6D30070E6CF /* BlockIdWallet - BlockIdCoin Price.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BlockIdWallet - BlockIdCoin Price.entitlements"; sourceTree = "<group>"; };
+		3271B0A9236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BlockIdWallet - BlockIdCoin Price.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3271B0AA236E2E0700DA766F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		3271B0AD236E2E0700DA766F /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		3271B0B0236E2E0700DA766F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 		3271B0AC236E2E0700DA766F /* TodayExtension */ = {
 			isa = PBXGroup;
 			children = (
-				32475F792370F6D30070E6CF /* BlockIdWallet - Bitcoin Price.entitlements */,
+				32475F792370F6D30070E6CF /* BlockIdWallet - BlockIdCoin Price.entitlements */,
 				32A5F95E236E4A2A00443927 /* API */,
 				3271B0AD236E2E0700DA766F /* TodayViewController.swift */,
 				3271B0AF236E2E0700DA766F /* MainInterface.storyboard */,
@@ -480,7 +480,7 @@
 				2D02E4901E0B4A5D006451C7 /* BlockIdWallet-tvOSTests.xctest */,
 				B40D4E30225841EC00428FCC /* BlueWalletWatch.app */,
 				B40D4E3C225841ED00428FCC /* BlueWalletWatch Extension.appex */,
-				3271B0A9236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex */,
+				3271B0A9236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -670,7 +670,7 @@
 			);
 			name = TodayExtension;
 			productName = TodayExtension;
-			productReference = 3271B0A9236E2E0700DA766F /* BlockIdWallet - Bitcoin Price.appex */;
+			productReference = 3271B0A9236E2E0700DA766F /* BlockIdWallet - BlockIdCoin Price.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		B40D4E2F225841EC00428FCC /* BlueWalletWatch */ = {
@@ -1594,7 +1594,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "TodayExtension/BlockIdWallet - Bitcoin Price.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "TodayExtension/BlockIdWallet - BlockIdCoin Price.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1606,7 +1606,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.TodayExtension;
-				PRODUCT_NAME = "BlockIdWallet - Bitcoin Price";
+				PRODUCT_NAME = "BlockIdWallet - BlockIdCoin Price";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1625,7 +1625,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "TodayExtension/BlockIdWallet - Bitcoin Price.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "TodayExtension/BlockIdWallet - BlockIdCoin Price.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -1637,7 +1637,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.TodayExtension;
-				PRODUCT_NAME = "BlockIdWallet - Bitcoin Price";
+				PRODUCT_NAME = "BlockIdWallet - BlockIdCoin Price";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

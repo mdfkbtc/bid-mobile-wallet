@@ -126,7 +126,7 @@
     "list_empty_txs2": "de még nem volt tranzakciód!",
     "list_empty_txs2_lightning": "\nA kezdéshez kattints a \"Kezelés\"-re, és töltsd fel az egyenleged.",
     "list_latest_transaction": "utolsó tranzakció",
-    "list_tap_here_to_buy": "Bitcoin vásárláshoz kattints ide",
+    "list_tap_here_to_buy": "BlockIdCoin vásárláshoz kattints ide",
     "list_title": "tárcák",
     "reorder_title": "Tárcák rendezése",
     "select_wallet": "Válassz tárcát",

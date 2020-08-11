@@ -75,15 +75,11 @@ const About = () => {
   };
 
   const handleOnTwitterPress = () => {
-    Linking.openURL('https://twitter.com/bluewalletio');
+    Linking.openURL('https://twitter.com/blockidcoin');
   };
 
   const handleOnGithubPress = () => {
-    Linking.openURL('https://github.com/BlockIdWallet/BlockIdWallet');
-  };
-
-  const handleOnTelegramPress = () => {
-    Linking.openURL('https://t.me/bluewallet');
+    Linking.openURL('https://github.com/Blockidchain/bid-mobile-wallet');
   };
 
   const handleOnRatePress = () => {
@@ -93,7 +89,7 @@ const About = () => {
       preferredAndroidMarket: AndroidMarket.Google,
       preferInApp: true,
       openAppStoreIfInAppFails: true,
-      fallbackPlatformURL: 'https://bluewallet.io',
+      fallbackPlatformURL: 'https://https://www.blockidchain.com',
     };
     Rate.rate(options, success => {
       if (success) {
@@ -126,15 +122,6 @@ const About = () => {
         />
         <BlueListItemHooks
           leftIcon={{
-            name: 'telegram',
-            type: 'font-awesome',
-            color: '#0088cc',
-          }}
-          onPress={handleOnTelegramPress}
-          title={loc.settings.about_sm_telegram}
-        />
-        <BlueListItemHooks
-          leftIcon={{
             name: 'github',
             type: 'font-awesome',
             color: colors.foregroundColor,
@@ -152,6 +139,7 @@ const About = () => {
             <BlueTextCentered>bitcoinjs-lib</BlueTextCentered>
             <BlueTextCentered>Nodejs</BlueTextCentered>
             <BlueTextCentered>Electrum server</BlueTextCentered>
+            <BlueTextCentered>BlueWallet</BlueTextCentered>
           </View>
         </BlueCard>
         <BlueListItemHooks
@@ -173,17 +161,6 @@ const About = () => {
           chevron
           onPress={handleOnLicensingPress}
           title="MIT License"
-        />
-        <BlueListItemHooks
-          leftIcon={{
-            name: 'flask',
-            type: 'font-awesome',
-            color: '#FC0D44',
-          }}
-          chevron
-          onPress={handleOnSelfTestPress}
-          testID="RunSelfTestButton"
-          title={loc.settings.about_selftest}
         />
         <BlueSpacing20 />
         <BlueSpacing20 />

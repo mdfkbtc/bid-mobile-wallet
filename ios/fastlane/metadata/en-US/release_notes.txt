@@ -62,7 +62,7 @@ v5.4.3
 * ADD: Login to Local Trader with HodlHodl
 * ADD: See full listing screen
 * ADD: See your contracts/offers
-* ADD: Accept offer (buy Bitcoin)
+* ADD: Accept offer (buy BlockIdCoin)
 * ADD: You can now modify on-chain transaction note to self
 * ADD: ILS Fiat
 * REF: improved electrum server connectivity

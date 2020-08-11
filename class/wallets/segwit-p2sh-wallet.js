@@ -4,7 +4,7 @@ const coinSelectAccumulative = require('coinselect/accumulative');
 const coinSelectSplit = require('coinselect/split');
 
 /**
- * Creates Segwit P2SH Bitcoin address
+ * Creates Segwit P2SH BlockIdCoin address
  * @param pubkey
  * @param network
  * @returns {String}

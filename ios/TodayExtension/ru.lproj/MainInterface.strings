@@ -1,6 +1,6 @@
 
-/* Class = "UILabel"; text = "Bitcoin Price"; ObjectID = "aaf-Pc-Y9i"; */
-"aaf-Pc-Y9i.text" = "Bitcoin Price";
+/* Class = "UILabel"; text = "BlockIdCoin Price"; ObjectID = "aaf-Pc-Y9i"; */
+"aaf-Pc-Y9i.text" = "BlockIdCoin Price";
 
 /* Class = "UILabel"; text = "from"; ObjectID = "aqr-Mt-cor"; */
 "aqr-Mt-cor.text" = "from";
