@@ -327,11 +327,11 @@ const ReceiveDetails = () => {
   const getDisplayAmount = () => {
     switch (customUnit) {
       case BitcoinUnit.BTC:
-        return customAmount + ' BTC';
+        return customAmount + ' BID';
       case BitcoinUnit.SATS:
-        return currency.satoshiToBTC(customAmount) + ' BTC';
+        return currency.satoshiToBTC(customAmount) + ' BID';
       case BitcoinUnit.LOCAL_CURRENCY:
-        return currency.fiatToBTC(customAmount) + ' BTC';
+        return currency.fiatToBTC(customAmount) + ' BID';
     }
     return customAmount + ' ' + customUnit;
   };
@@ -343,7 +343,7 @@ const ReceiveDetails = () => {
         <Handoff
           title={`BlockIdCoin Transaction ${address}`}
           type="io.bluewallet.bluewallet"
-          url={`https://blockstream.info/address/${address}`}
+          url={`https://bid.cryptoscope.cc/address/?address=${address}`}
         />
       )}
       {showAddress ? renderReceiveDetails() : <BlueLoadingHook />}

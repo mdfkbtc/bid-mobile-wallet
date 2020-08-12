@@ -170,7 +170,7 @@ export default class TransactionsDetails extends Component {
           <Handoff
             title={`BlockIdCoin Transaction ${this.state.tx.hash}`}
             type="io.bluewallet.bluewallet"
-            url={`https://blockstream.info/tx/${this.state.tx.hash}`}
+            url={`https://bid.cryptoscope.cc/tx/?txid=${this.state.tx.hash}`}
           />
         )}
         <StatusBar barStyle="default" />
@@ -223,7 +223,7 @@ export default class TransactionsDetails extends Component {
                 <BlueText style={styles.txHash}>{this.state.tx.hash}</BlueText>
                 <TouchableOpacity
                   onPress={() => {
-                    const url = `https://blockstream.info/tx/${this.state.tx.hash}`;
+                    const url = `https://bid.cryptoscope.cc/tx/?txid=${this.state.tx.hash}`;
                     Linking.canOpenURL(url).then(supported => {
                       if (supported) {
                         Linking.openURL(url);

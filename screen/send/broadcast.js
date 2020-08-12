@@ -182,7 +182,7 @@ function SuccessScreen({ tx }) {
           <BlueSpacing20 />
           <BlueTextCentered>Success! You transaction has been broadcasted!</BlueTextCentered>
           <BlueSpacing10 />
-          <Text style={styles.link} onPress={() => Linking.openURL(`https://blockstream.info/tx/${tx}`)}>
+          <Text style={styles.link} onPress={() => Linking.openURL(`https://bid.cryptoscope.cc/tx/?txid=${tx}`)}>
             Open link in explorer
           </Text>
         </View>

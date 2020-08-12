@@ -251,7 +251,7 @@ export default class TransactionsStatus extends Component {
           <Handoff
             title={`BlockIdCoin Transaction ${this.state.tx.hash}`}
             type="io.bluewallet.bluewallet"
-            url={`https://blockstream.info/tx/${this.state.tx.hash}`}
+            url={`https://bid.cryptoscope.cc/tx/?txid=${this.state.tx.hash}`}
           />
         )}
         <StatusBar barStyle="default" />
