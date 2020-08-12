@@ -7,6 +7,7 @@ export const BlueDefaultTheme = {
   scanImage: require('../img/scan.png'),
   colors: {
     ...DefaultTheme.colors,
+    headerBackgroundColor: '#4250b2',
     brandingColor: '#ffffff',
     foregroundColor: '#0c2550',
     borderTopColor: 'rgba(0, 0, 0, 0.1)',
@@ -64,6 +65,7 @@ export const BlueDarkTheme = {
   colors: {
     ...BlueDefaultTheme.colors,
     ...DarkTheme.colors,
+    headerBackgroundColor: '#111',
     brandingColor: '#000000',
     borderTopColor: '#9aa0aa',
     foregroundColor: '#ffffff',

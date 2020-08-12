@@ -132,7 +132,7 @@ export default class WalletsAdd extends Component {
 
   async componentDidMount() {
     let walletBaseURI = await AsyncStorage.getItem(AppStorage.LNDHUB);
-    const isAdvancedOptionsEnabled = await BlueApp.isAdancedModeEnabled();
+    const isAdvancedOptionsEnabled = true;
     walletBaseURI = walletBaseURI || '';
     this.setState({
       isLoading: false,
@@ -305,6 +305,13 @@ export default class WalletsAdd extends Component {
                   onPress={() => {
                     this.setState({ isLoading: true }, async () => {
                       let w;
+
+                      if (this.isBiometricUseCapableAndEnabled) {
+                        if (!(await Biometric.unlockWithBiometrics())) {
+                          this.setState({ isLoading: false });
+                          return;
+                        }
+                      }
 
                       if (this.state.activeLightning) {
                         this.createLightningWallet = async () => {
