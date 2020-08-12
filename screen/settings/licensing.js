@@ -24,7 +24,8 @@ const Licensing = () => {
         <BlueCard>
           <BlueTextHooks>MIT License</BlueTextHooks>
           <BlueSpacing20 />
-          <BlueTextHooks>Copyright (c) 2018-2020 BlockIdWallet Services</BlueTextHooks>
+          <BlueTextHooks>Copyright (c) 2018-2020 BlueWallet Services</BlueTextHooks>
+          <BlueTextHooks>Copyright (c) 2020 CortezVault Services</BlueTextHooks>
           <BlueSpacing20 />
           <BlueTextHooks>
             Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
