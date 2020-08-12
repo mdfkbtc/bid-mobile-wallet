@@ -259,9 +259,9 @@ export default class TransactionsStatus extends Component {
           <BlueCard>
             <View style={styles.center}>
               <Text style={styles.value}>
-                {formatBalanceWithoutSuffix(this.state.tx.value, this.state.wallet.preferredBalanceUnit, true)}{' '}
+                {formatBalanceWithoutSuffix(this.state.tx.value, BitcoinUnit.BTC, true)}{' '}
                 {this.state.wallet.preferredBalanceUnit !== BitcoinUnit.LOCAL_CURRENCY && (
-                  <Text style={styles.valueUnit}>{this.state.wallet.preferredBalanceUnit}</Text>
+                  <Text style={styles.valueUnit}>{BitcoinUnit.BTC}</Text>
                 )}
               </Text>
             </View>
