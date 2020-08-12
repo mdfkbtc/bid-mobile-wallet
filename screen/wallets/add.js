@@ -204,30 +204,15 @@ export default class WalletsAdd extends Component {
               underlineColorAndroid="transparent"
             />
           </View>
+          <BlueSpacing20 />
           <BlueFormLabel>{loc.wallets.add_wallet_type}</BlueFormLabel>
-
-          <View style={styles.buttons}>
-            <BitcoinButton
-              testID="ActivateBitcoinButton"
-              active={this.state.activeBitcoin}
-              onPress={() => {
-                Keyboard.dismiss();
-                this.setState({
-                  activeBitcoin: true,
-                  activeLightning: false,
-                });
-              }}
-              style={styles.button}
-            />
-          </View>
 
           <View style={styles.advanced}>
             {(() => {
-              if (this.state.activeBitcoin && this.state.isAdvancedOptionsEnabled) {
+              if (this.state.isAdvancedOptionsEnabled) {
                 return (
                   <View>
                     <BlueSpacing20 />
-                    <Text style={styles.advancedText}>{loc.settings.advanced_options}</Text>
                     <BlueListItem
                       containerStyle={styles.noPadding}
                       bottomDivider={false}
@@ -249,19 +234,6 @@ export default class WalletsAdd extends Component {
                       }}
                       title={LegacyWallet.typeReadable}
                       {...(this.state.selectedIndex === 1
-                        ? {
-                            rightIcon: <Icon name="check" type="octaicon" color="#0070FF" />,
-                          }
-                        : { hideChevron: true })}
-                    />
-                    <BlueListItem
-                      containerStyle={styles.noPadding}
-                      bottomDivider={false}
-                      onPress={() => {
-                        this.onSelect(2, HDSegwitP2SHWallet.typeReadable.type);
-                      }}
-                      title={HDSegwitP2SHWallet.typeReadable}
-                      {...(this.state.selectedIndex === 2
                         ? {
                             rightIcon: <Icon name="check" type="octaicon" color="#0070FF" />,
                           }
@@ -353,10 +325,6 @@ export default class WalletsAdd extends Component {
                           });
                         };
                         this.createLightningWallet();
-                      } else if (this.state.selectedIndex === 2) {
-                        // zero index radio - HD segwit
-                        w = new HDSegwitP2SHWallet();
-                        w.setLabel(this.state.label || loc.wallets.details_title);
                       } else if (this.state.selectedIndex === 1) {
                         // btc was selected
                         // index 1 radio - segwit single address
@@ -386,7 +354,7 @@ export default class WalletsAdd extends Component {
                         EV(EV.enum.WALLETS_COUNT_CHANGED);
                         A(A.ENUM.CREATED_WALLET);
                         ReactNativeHapticFeedback.trigger('notificationSuccess', { ignoreAndroidSystemSettings: false });
-                        if (w.type === HDSegwitP2SHWallet.type || w.type === HDLegacyP2PKHWallet.type) {
+                        if (w.type === HDLegacyP2PKHWallet.type) {
                           this.props.navigation.navigate('PleaseBackup', {
                             secret: w.getSecret(),
                           });
