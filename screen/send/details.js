@@ -1033,7 +1033,7 @@ export default class SendDetails extends Component {
               </View>
               <TouchableOpacity
                 onPress={() => this.setState({ isFeeSelectionModalVisible: true })}
-                disabled={this.state.isLoading}
+                disabled={true}
                 style={styles.fee}
               >
                 <Text style={styles.feeLabel}>{loc.send.create_fee}</Text>
