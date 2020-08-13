@@ -93,6 +93,7 @@ const WalletsStack = createStackNavigator();
 const WalletsRoot = () => (
   <WalletsStack.Navigator>
     <WalletsStack.Screen name="WalletsList" component={WalletsList} options={WalletsList.navigationOptions} />
+    <WalletsStack.Screen name="AddWallet" component={AddWallet} options={AddWallet.navigationOptions} />
     <WalletsStack.Screen name="WalletTransactions" component={WalletTransactions} options={WalletTransactions.navigationOptions} />
     <WalletsStack.Screen name="WalletDetails" component={WalletDetails} options={WalletDetails.navigationOptions} />
     <WalletsStack.Screen name="TransactionDetails" component={TransactionDetails} options={TransactionDetails.navigationOptions} />

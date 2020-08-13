@@ -13,7 +13,7 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import { BlueScanButton, WalletsCarousel, BlueHeaderDefaultMain, BlueTransactionListItem, BlueNavigationStyle } from '../../BlueComponents';
+import { BlueScanButton, WalletsCarousel, BlueHeaderDefaultMain, BlueTransactionListItem, BlueNavigationStyle, BluePlusIcon } from '../../BlueComponents';
 import { Icon } from 'react-native-elements';
 import DeeplinkSchemaMatch from '../../class/deeplink-schema-match';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -351,26 +351,6 @@ export default class WalletsList extends Component {
     }
   };
 
-  renderSectionHeader = ({ section }) => {
-    switch (section.key) {
-      case WalletsListSections.CAROUSEL:
-        return (
-          <BlueHeaderDefaultMain
-            leftText={loc.wallets.list_title}
-            onNewWalletPress={
-              !BlueApp.getWallets().some(wallet => wallet.type === PlaceholderWallet.type)
-                ? () => this.props.navigation.navigate('AddWalletRoot')
-                : null
-            }
-          />
-        );
-      case WalletsListSections.TRANSACTIONS:
-        return this.renderListHeaderComponent();
-      default:
-        return null;
-    }
-  };
-
   renderSectionFooter = ({ section }) => {
     switch (section.key) {
       case WalletsListSections.TRANSACTIONS:
@@ -523,7 +503,6 @@ export default class WalletsList extends Component {
             refreshControl={<RefreshControl onRefresh={this.refreshTransactions} refreshing={!this.state.isFlatListRefreshControlHidden} />}
             renderItem={this.renderSectionItem}
             keyExtractor={this.sectionListKeyExtractor}
-            renderSectionHeader={this.renderSectionHeader}
             initialNumToRender={20}
             contentInset={styles.scrollContent}
             renderSectionFooter={this.renderSectionFooter}
@@ -673,17 +652,22 @@ WalletsList.propTypes = {
 WalletsList.navigationOptions = ({ navigation, route }) => {
   return {
     ...BlueNavigationStyle(navigation, true),
-    title: '',
+    headerTitleStyle: { alignSelf: 'center', marginBottom: 3 },
+    title: 'Dashboard',
     headerStyle: {
-      backgroundColor: BlueCurrentTheme.colors.customHeader,
       borderBottomWidth: 0,
       elevation: 0,
       shadowOpacity: 0,
       shadowOffset: { height: 0, width: 0 },
     },
+    headerLeft: () => (
+      <TouchableOpacity style={{ alignSelf: 'center', marginTop: 0 }} onPress={() => NavigationService.navigate('AddWalletRoot')}>
+        <BluePlusIcon />
+      </TouchableOpacity>
+    ),
     headerRight: () => (
       <TouchableOpacity testID="SettingsButton" style={styles.headerTouch} onPress={() => NavigationService.navigate('Settings')}>
-        <Icon size={22} name="kebab-horizontal" type="octicon" color={BlueCurrentTheme.colors.foregroundColor} />
+        <Icon size={22} name="kebab-horizontal" type="octicon" color={'white'} />
       </TouchableOpacity>
     ),
   };

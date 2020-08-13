@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   saveText: {
-    color: BlueCurrentTheme.colors.alternativeTextColor2,
+    color: 'white',
   },
   memoTextInput: {
     flexDirection: 'row',
@@ -287,7 +287,7 @@ TransactionsDetails.navigationOptions = ({ navigation, route }) => ({
   title: loc.transactions.details_title,
   headerStyle: {
     ...BlueNavigationStyle().headerStyle,
-    backgroundColor: BlueCurrentTheme.colors.customHeader,
+    backgroundColor: 'transparent',
   },
   headerRight: () => (
     <TouchableOpacity disabled={route.params.isLoading === true} style={styles.save} onPress={route.params.handleOnSaveButtonTapped}>

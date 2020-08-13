@@ -438,6 +438,6 @@ TransactionsStatus.navigationOptions = () => ({
   title: '',
   headerStyle: {
     ...BlueNavigationStyle().headerStyle,
-    backgroundColor: BlueCurrentTheme.colors.customHeader,
+    backgroundColor: 'transparent',
   },
 });

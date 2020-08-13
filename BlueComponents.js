@@ -37,7 +37,7 @@ import Biometric from './class/biometrics';
 import { encodeUR } from 'bc-ur/dist';
 import QRCode from 'react-native-qrcode-svg';
 import { useTheme } from '@react-navigation/native';
-import { BlueCurrentTheme } from './components/themes';
+import { BlueCurrentTheme, BlueDarkTheme } from './components/themes';
 import loc, { formatBalance, formatBalanceWithoutSuffix, formatBalancePlain, removeTrailingZeros, transactionTimeToReadable } from './loc';
 import AsyncStorage from '@react-native-community/async-storage';
 import Lnurl from './class/lnurl';
@@ -452,7 +452,7 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
   if (withNavigationCloseButton) {
     headerRight = () => (
       <TouchableOpacity
-        style={{ width: 40, height: 40, padding: 14 }}
+        style={{ width: 40, height: 42, padding: 14, marginBottom: 3 }}
         onPress={
           customCloseButtonFunction === undefined
             ? () => {
@@ -462,7 +462,7 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
             : customCloseButtonFunction
         }
       >
-        <Image style={{ alignSelf: 'center' }} source={closeImage} />
+        <Image style={{ alignSelf: 'center' }} source={BlueDarkTheme.closeImage} />
       </TouchableOpacity>
     );
   } else {
@@ -470,7 +470,15 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
   }
 
   return {
+    headerBackground: () => (
+      <Image
+        source={require('./img/navbar-background.png')}
+        resizeMode='stretch'
+        style={{ height: 50 }}
+    />
+    ),
     headerStyle: {
+      backgroundColor: 'transparent',
       borderBottomWidth: 0,
       elevation: 0,
       shadowOpacity: 0,
@@ -478,11 +486,11 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
     },
     headerTitleStyle: {
       fontWeight: '600',
-      color: colors.foregroundColor,
+      color: 'white',
     },
     headerRight,
     headerBackTitleVisible: false,
-    headerTintColor: colors.foregroundColor,
+    headerTintColor: 'white',
   };
 };
 
@@ -491,23 +499,31 @@ export const BlueCreateTxNavigationStyle = (navigation, withAdvancedOptionsMenuB
   if (withAdvancedOptionsMenuButton) {
     headerRight = () => (
       <TouchableOpacity style={{ minWidth: 40, height: 40, justifyContent: 'center' }} onPress={advancedOptionsMenuButtonAction}>
-        <Icon size={22} name="kebab-horizontal" type="octicon" color={BlueCurrentTheme.colors.foregroundColor} />
+        <Icon size={22} name="kebab-horizontal" type="octicon" color={'white'} />
       </TouchableOpacity>
     );
   } else {
     headerRight = null;
   }
   return {
+    headerBackground: () => (
+      <Image
+        source={require('./img/navbar-background.png')}
+        resizeMode='stretch'
+        style={{ height: 50 }}
+    />
+    ),    
     headerStyle: {
+      backgroundColor: 'transparent',
       borderBottomWidth: 0,
       elevation: 0,
       shadowOffset: { height: 0, width: 0 },
     },
     headerTitleStyle: {
       fontWeight: '600',
-      color: BlueCurrentTheme.colors.foregroundColor,
+      color: 'white',
     },
-    headerTintColor: BlueCurrentTheme.colors.foregroundColor,
+    headerTintColor: 'white',
     headerLeft: () => (
       <TouchableOpacity
         style={{ minWwidth: 40, height: 40, justifyContent: 'center', paddingHorizontal: 14 }}
@@ -516,7 +532,7 @@ export const BlueCreateTxNavigationStyle = (navigation, withAdvancedOptionsMenuB
           navigation.goBack(null);
         }}
       >
-        <Image style={{}} source={BlueCurrentTheme.closeImage} />
+        <Image style={{}} source={BlueDarkTheme.closeImage} />
       </TouchableOpacity>
     ),
     headerRight,
@@ -862,14 +878,14 @@ export const BlueHeaderDefaultSubHooks = props => {
 export class BlueHeaderDefaultMain extends Component {
   render() {
     return (
-      <SafeAreaView style={{ paddingVertical: 8, paddingHorizontal: 4, backgroundColor: BlueCurrentTheme.colors.background }}>
+      <SafeAreaView style={{ marginLeft: 5, marginTop: 10, paddingVertical: 8, paddingHorizontal: 4, backgroundColor: BlueCurrentTheme.colors.background }}>
         <Header
           {...this.props}
           leftComponent={{
             text: this.props.leftText,
             style: {
               fontWeight: 'bold',
-              fontSize: 34,
+              fontSize: 24,
               color: BlueCurrentTheme.colors.foregroundColor,
             },
           }}
@@ -1108,7 +1124,8 @@ const stylesBlueIcon = StyleSheet.create({
   },
   box1: {
     position: 'relative',
-    top: 15,
+    top: 10,
+    marginLeft: 10,
   },
   box: {
     alignSelf: 'flex-end',
