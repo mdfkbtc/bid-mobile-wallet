@@ -14,7 +14,7 @@ import { BlueCurrentTheme } from '../components/themes';
 export default class WalletGradient {
   static hdSegwitP2SHWallet = ['#65ceef', '#68bbe1'];
   static hdSegwitBech32Wallet = ['#68bbe1', '#3b73d4'];
-  static segwitBech32Wallet = ['#f8bbe1', '#945a90'];
+  static segwitBech32Wallet = ['#4db9fe', '#4250b2'];
   static watchOnlyWallet = ['#7d7d7d', '#4a4a4a'];
   static legacyWallet = ['#4250b2', '#4db9fe'];
   static hdLegacyP2PKHWallet = ['#4250b2', '#4db9fe'];

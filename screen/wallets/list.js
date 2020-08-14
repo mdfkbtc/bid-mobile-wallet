@@ -13,7 +13,16 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import { BlueScanButton, WalletsCarousel, BlueHeaderDefaultMain, BlueTransactionListItem, BlueNavigationStyle, BluePlusIcon } from '../../BlueComponents';
+import { 
+  BlueScanButton, 
+  WalletsCarousel, 
+  BlueHeaderDefaultMain, 
+  BlueTransactionListItem, 
+  BlueNavigationStyle, 
+  BluePlusIcon, 
+  Tabs, 
+  FooterNavigator 
+} from '../../BlueComponents';
 import { Icon } from 'react-native-elements';
 import DeeplinkSchemaMatch from '../../class/deeplink-schema-match';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -514,6 +523,7 @@ export default class WalletsList extends Component {
           />
           {this.renderScanButton()}
         </View>
+        <FooterNavigator />
       </View>
     );
   }
@@ -555,6 +565,7 @@ const styles = StyleSheet.create({
   },
   headerTouch: {
     height: 48,
+    display: 'none',
     paddingRight: 16,
     paddingLeft: 32,
     paddingVertical: 10,
@@ -625,7 +636,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'transparent',
     position: 'absolute',
-    bottom: 30,
+    bottom: 20,
     borderRadius: 30,
     minHeight: 48,
     overflow: 'hidden',
@@ -660,12 +671,12 @@ WalletsList.navigationOptions = ({ navigation, route }) => {
       shadowOpacity: 0,
       shadowOffset: { height: 0, width: 0 },
     },
-    headerLeft: () => (
+    headerRight: () => (
       <TouchableOpacity style={{ alignSelf: 'center', marginTop: 0 }} onPress={() => NavigationService.navigate('AddWalletRoot')}>
         <BluePlusIcon />
       </TouchableOpacity>
     ),
-    headerRight: () => (
+    headerLeft: () => (
       <TouchableOpacity testID="SettingsButton" style={styles.headerTouch} onPress={() => NavigationService.navigate('Settings')}>
         <Icon size={22} name="kebab-horizontal" type="octicon" color={'white'} />
       </TouchableOpacity>

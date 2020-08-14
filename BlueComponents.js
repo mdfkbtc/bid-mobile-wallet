@@ -2,6 +2,7 @@
 import React, { Component, useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
+import RNExitApp from 'react-native-exit-app';
 import { Icon, Input, Text, Header, ListItem } from 'react-native-elements';
 import {
   TouchableOpacity,
@@ -21,6 +22,7 @@ import {
   Platform,
   FlatList,
   TextInput,
+  BackHandler,
 } from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 import LinearGradient from 'react-native-linear-gradient';
@@ -446,6 +448,86 @@ export const BlueAlertWalletExportReminder = ({ onSuccess = () => {}, onFailure 
   );
 };
 
+export class FooterNavigator extends Component {
+
+  backPressed = () => {
+    Alert.alert(
+      'Logout from App',
+      'Do you want to logout from App?',
+      [
+        {text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'Yes', onPress: () => RNExitApp.exitApp()},
+      ],
+      { cancelable: false });
+      return true;
+  }
+
+  render() {  
+    return (
+      <LinearGradient
+              shadowColor={BlueCurrentTheme.colors.shadowColor}
+              colors={WalletGradient.segwitBech32Wallet}
+              style={{ height: 55, }}
+            >
+        <View style={{ height: 55, flexDirection: 'row', }}>
+          <TouchableOpacity 
+            style={{
+              flex: 1, 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              activeTintColor: '#42f44b',
+            }}
+            onPress={() => {
+              this.backPressed() 
+            }}
+          >
+            <Ionicons
+              {...this.props}
+              name="md-exit"
+              size={22}
+              style={{
+                color: 'white',
+                backgroundColor: 'transparent',
+              }}
+            />
+            <View>
+              <Text style={{ color: 'white' }}>
+                Logout
+            </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={{
+              flex: 1, 
+              alignItems: 'center', 
+              justifyContent: 'center',
+               activeTintColor: '#42f44b', 
+            }}
+            onPress={() => {
+              NavigationService.navigate('Settings') 
+            }}
+          >
+            <Ionicons
+              {...this.props}
+              name="md-settings"
+              size={22}
+              style={{
+                color: 'white',
+                backgroundColor: 'transparent',
+              }}
+            />
+            <View>
+              <Text style={{ color: 'white' }}>
+                Settings
+            </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>  
+    );
+  }
+}
+
 export const BlueNavigationStyle = (navigation, withNavigationCloseButton = false, customCloseButtonFunction = undefined) => {
   let headerRight;
   const { colors, closeImage } = useTheme();
@@ -471,11 +553,11 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
 
   return {
     headerBackground: () => (
-      <Image
-        source={require('./img/navbar-background.png')}
-        resizeMode='stretch'
-        style={{ height: 50 }}
-    />
+      <LinearGradient
+        shadowColor={BlueCurrentTheme.colors.shadowColor}
+        colors={WalletGradient.legacyWallet}
+        style={{ height: 50, }}
+      />
     ),
     headerStyle: {
       backgroundColor: 'transparent',
@@ -507,11 +589,11 @@ export const BlueCreateTxNavigationStyle = (navigation, withAdvancedOptionsMenuB
   }
   return {
     headerBackground: () => (
-      <Image
-        source={require('./img/navbar-background.png')}
-        resizeMode='stretch'
-        style={{ height: 50 }}
-    />
+      <LinearGradient
+          shadowColor={BlueCurrentTheme.colors.shadowColor}
+          colors={WalletGradient.legacyWallet}
+          style={{ height: 50, }}
+      />
     ),    
     headerStyle: {
       backgroundColor: 'transparent',
@@ -878,7 +960,7 @@ export const BlueHeaderDefaultSubHooks = props => {
 export class BlueHeaderDefaultMain extends Component {
   render() {
     return (
-      <SafeAreaView style={{ marginLeft: 5, marginTop: 10, paddingVertical: 8, paddingHorizontal: 4, backgroundColor: BlueCurrentTheme.colors.background }}>
+      <SafeAreaView style={{ marginTop: 10, paddingVertical: 8, paddingHorizontal: 4, backgroundColor: BlueCurrentTheme.colors.background }}>
         <Header
           {...this.props}
           leftComponent={{
@@ -1121,6 +1203,7 @@ export const BlueLoadingHook = () => {
 const stylesBlueIcon = StyleSheet.create({
   container: {
     flex: 1,
+    marginRight: 7,
   },
   box1: {
     position: 'relative',
@@ -1136,8 +1219,8 @@ const stylesBlueIcon = StyleSheet.create({
     position: 'relative',
   },
   ball: {
-    width: 30,
-    height: 30,
+    width: 28,
+    height: 28,
     borderRadius: 15,
     backgroundColor: BlueCurrentTheme.colors.buttonBackgroundColor,
   },
@@ -1200,22 +1283,19 @@ export class BluePlusIcon extends Component {
   render() {
     return (
       <View {...this.props} style={stylesBlueIcon.container}>
-        <View style={stylesBlueIcon.box1}>
-          <View style={stylesBlueIcon.ball}>
-            <Ionicons
-              {...this.props}
-              name="ios-add"
-              size={26}
-              style={{
-                color: BlueCurrentTheme.colors.foregroundColor,
-                backgroundColor: 'transparent',
-                left: 8,
-                top: 1,
-              }}
-            />
-          </View>
-        </View>
-      </View>
+        <Ionicons
+          {...this.props}
+          name="md-add"
+          size={32}
+          style={{
+            fontWeight: 'bold',
+            top: 10,
+            right: 10,
+            color: 'white',
+            backgroundColor: 'transparent',
+          }}
+        />
+  </View>
     );
   }
 }
