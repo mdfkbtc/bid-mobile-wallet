@@ -58,11 +58,11 @@ async function updateExchangeRate() {
   let json;
   try {
     const api = new Frisbee({
-      baseURI: 'https://api.coindesk.com',
+      baseURI: 'https://api.coingecko.com',
     });
-    const response = await api.get('/v1/bpi/currentprice/' + preferredFiatCurrency.endPointKey + '.json');
-    json = JSON.parse(response.body);
-    if (!json || !json.bpi || !json.bpi[preferredFiatCurrency.endPointKey] || !json.bpi[preferredFiatCurrency.endPointKey].rate_float) {
+    const response = await api.get('/api/v3/simple/price?ids=blockidcoin&vs_currencies=' + preferredFiatCurrency.endPointKey);
+    json = response.body;
+    if (!json || !json.blockidcoin || !json.blockidcoin[preferredFiatCurrency.endPointKey.toLowerCase()]) {
       throw new Error('Could not update currency rate: ' + response.err);
     }
   } catch (Err) {
@@ -73,7 +73,7 @@ async function updateExchangeRate() {
   }
 
   exchangeRates[STRUCT.LAST_UPDATED] = +new Date();
-  exchangeRates['BTC_' + preferredFiatCurrency.endPointKey] = json.bpi[preferredFiatCurrency.endPointKey].rate_float * 1;
+  exchangeRates['BTC_' + preferredFiatCurrency.endPointKey] = json.blockidcoin[preferredFiatCurrency.endPointKey.toLowerCase()] * 1;
   await AsyncStorage.setItem(AppStorage.EXCHANGE_RATES, JSON.stringify(exchangeRates));
   await AsyncStorage.setItem(AppStorage.PREFERRED_CURRENCY, JSON.stringify(preferredFiatCurrency));
   await setPrefferedCurrency(preferredFiatCurrency);
