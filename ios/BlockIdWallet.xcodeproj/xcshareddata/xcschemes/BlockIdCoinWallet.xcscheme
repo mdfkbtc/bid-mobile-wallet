@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "BlueWalletTests.xctest"
-               BlueprintName = "BlueWalletTests"
+               BuildableName = "BlockIdCoinWalletTests.xctest"
+               BlueprintName = "BlockIdCoinWalletTests"
                ReferencedContainer = "container:BlockIdWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1020"
-   version = "1.3">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-               BuildableName = "BlueWalletWatch.app"
-               BlueprintName = "BlueWalletWatch"
+               BuildableName = "BlockIdCoinWalletWatch.app"
+               BlueprintName = "BlockIdCoinWalletWatch"
                ReferencedContainer = "container:BlockIdWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-            BuildableName = "BlueWalletWatch.app"
-            BlueprintName = "BlueWalletWatch"
+            BuildableName = "BlockIdCoinWalletWatch.app"
+            BlueprintName = "BlockIdCoinWalletWatch"
             ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,8 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      notificationPayloadFile = "BlueWalletWatch Extension/PushNotificationPayload.apns">
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "BlockIdCoinWalletWatch Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
@@ -73,8 +74,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-            BuildableName = "BlueWalletWatch.app"
-            BlueprintName = "BlueWalletWatch"
+            BuildableName = "BlockIdCoinWalletWatch.app"
+            BlueprintName = "BlockIdCoinWalletWatch"
             ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -82,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-            BuildableName = "BlueWalletWatch.app"
-            BlueprintName = "BlueWalletWatch"
+            BuildableName = "BlockIdCoinWalletWatch.app"
+            BlueprintName = "BlockIdCoinWalletWatch"
             ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -95,7 +96,9 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "BlockIdCoinWalletWatch Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
@@ -103,8 +106,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-            BuildableName = "BlueWalletWatch.app"
-            BlueprintName = "BlueWalletWatch"
+            BuildableName = "BlockIdCoinWalletWatch.app"
+            BlueprintName = "BlockIdCoinWalletWatch"
             ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -112,8 +115,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
-            BuildableName = "BlueWalletWatch.app"
-            BlueprintName = "BlueWalletWatch"
+            BuildableName = "BlockIdCoinWalletWatch.app"
+            BlueprintName = "BlockIdCoinWalletWatch"
             ReferencedContainer = "container:BlockIdWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
