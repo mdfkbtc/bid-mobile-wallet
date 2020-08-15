@@ -214,7 +214,7 @@
     "about_sm_twitter": "ติดตามเราในทวิตเตอร์",
     "advanced_options": "ตัวเลือกขั้นสูง",
     "currency": "สกุลเงิน",
-    "currency_source": "ราคาได้มาจาก CoinDesk",
+    "currency_source": "ราคาได้มาจาก CoinGecko",
     "default_desc": "When disabled, BlockIdWallet will immediately open the selected wallet at launch.",
     "default_info": "ค่าเริ่มต้นไปยัง",
     "default_title": "เมื่อเปิดตัว",

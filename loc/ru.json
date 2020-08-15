@@ -214,7 +214,7 @@
     "about_sm_twitter": "Мы в Twitter",
     "advanced_options": "Расширенные настройки",
     "currency": "Валюта",
-    "currency_source": "Источник курсов CoinDesk",
+    "currency_source": "Источник курсов CoinGecko",
     "default_desc": "Когда выключено BlockIdWallet сразу же откроет выбранный кошелек при запуске.",
     "default_info": "Показать",
     "default_title": "При старте",

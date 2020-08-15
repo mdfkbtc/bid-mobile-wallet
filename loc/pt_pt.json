@@ -214,7 +214,7 @@
     "about_sm_twitter": "Follow us on Twitter",
     "advanced_options": "Opções Avançadas",
     "currency": "Moeda",
-    "currency_source": "Prices are obtained from CoinDesk",
+    "currency_source": "Prices are obtained from CoinGecko",
     "default_desc": "When disabled, BlockIdWallet will immediately open the selected wallet at launch.",
     "default_info": "Default into",
     "default_title": "On Launch",
