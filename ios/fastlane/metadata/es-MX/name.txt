@@ -1,1 +1,1 @@
-BlockIdWallet - Billetera BlockIdCoin
+BlockIdWallet - Billetera BlockId

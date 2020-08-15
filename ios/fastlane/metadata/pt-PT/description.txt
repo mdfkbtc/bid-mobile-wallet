@@ -1,10 +1,10 @@
-Uma carteira de BlockIdCoin que permite guardar, enviar BlockIdCoin, receber BlockIdCoin e comprar BlockIdCoin, focada na segurança e simplicidade.
+Uma carteira de BlockId que permite guardar, enviar BlockId, receber BlockId e comprar BlockId, focada na segurança e simplicidade.
 
-Com a BlockIdWallet, uma Carteira de BlockIdCoin em que controlas as chaves privadas. Uma Carteira de BlockIdCoin criada por utilizadores de BlockIdCoin para a comunidade.
+Com a BlockIdWallet, uma Carteira de BlockId em que controlas as chaves privadas. Uma Carteira de BlockId criada por utilizadores de BlockId para a comunidade.
 
 Podes fazer transações com qualquer pessoa no mundo e transformar o sistema financeiro directamente do teu bolso.
 
-Podes criar gratuitamente uma quantidade ilimitada de carteiras de BlockIdCoin ou importar as carteiras que já tens para a tua app BlockIdWallet. É fácil e rápido!
+Podes criar gratuitamente uma quantidade ilimitada de carteiras de BlockId ou importar as carteiras que já tens para a tua app BlockIdWallet. É fácil e rápido!
 
 ---
 
@@ -36,13 +36,13 @@ Substituição de Fee (RBF)
 Acelera as tuas transacções aumentando a fee (BIP125). Podes também alterar o endereço de destinatário em transações não confirmadas.
 
 Carteira Watch-only
-Carteira de Watch-only/ver apenas, observa o teu cold storage de BlockIdCoin sem ter de lhe tocar.
+Carteira de Watch-only/ver apenas, observa o teu cold storage de BlockId sem ter de lhe tocar.
 
 Lightning Network
-Carteira Lightning sem configurações. Transacções baratas e ultra rápidas com a melhor experiência do BlockIdCoin.
+Carteira Lightning sem configurações. Transacções baratas e ultra rápidas com a melhor experiência do BlockId.
 
-Comprar BlockIdCoin
-Agora já podes comprar BlockIdCoin directamente sem sair da tua carteira e com as tuas chaves privadas.
+Comprar BlockId
+Agora já podes comprar BlockId directamente sem sair da tua carteira e com as tuas chaves privadas.
 
 Local Trader
-Plataforma p2p BlockIdCoin de trading, que permite comprar e vender bitcoin directamente para outros utilizadores sem terceiros.
+Plataforma p2p BlockId de trading, que permite comprar e vender bitcoin directamente para outros utilizadores sem terceiros.

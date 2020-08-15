@@ -1,1 +1,1 @@
-BlockIdCoin & Lightning
+BlockId & Lightning

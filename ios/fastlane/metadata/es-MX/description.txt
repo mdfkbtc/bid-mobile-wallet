@@ -1,10 +1,10 @@
-Una Billetera de BlockIdCoin que te permite guardar, enviar BlockIdCoin, recibir BlockIdCoin y comprar BlockIdCoin, centrada en la seguridad y la simplicidad.
+Una Billetera de BlockId que te permite guardar, enviar BlockId, recibir BlockId y comprar BlockId, centrada en la seguridad y la simplicidad.
 
-Con BlockIdWallet, una billetera BlockIdCoin donde controlas las claves privadas. Una billetera BlockIdCoin creada por usuarios de BlockIdCoin para la comunidad.
+Con BlockIdWallet, una billetera BlockId donde controlas las claves privadas. Una billetera BlockId creada por usuarios de BlockId para la comunidad.
 
 Puede realizar transacciones con cualquier persona en el mundo y transformar el sistema financiero directamente desde su bolsillo.
 
-Puede crear una cantidad ilimitada de billeteras BlockIdCoin de forma gratuita o importar las billeteras que ya tiene en su aplicación BlockIdWallet. ¡Es fácil y rápido!
+Puede crear una cantidad ilimitada de billeteras BlockId de forma gratuita o importar las billeteras que ya tiene en su aplicación BlockIdWallet. ¡Es fácil y rápido!
 
 ---
 
@@ -36,13 +36,13 @@ Reemplazo de tarifas (RBF)
 Acelere sus transacciones aumentando la tarifa (BIP125). También puede cambiar la dirección del destinatario en transacciones no confirmadas.
 
 Billetera Watch-only
-Mira tu almacenamiento en frío de BlockIdCoin sin tener que tocarlo.
+Mira tu almacenamiento en frío de BlockId sin tener que tocarlo.
 
 Lightning Network
-Billetera Lightning sin ajustes. Transacciones baratas y ultrarrápidas con la mejor experiencia de BlockIdCoin.
+Billetera Lightning sin ajustes. Transacciones baratas y ultrarrápidas con la mejor experiencia de BlockId.
 
-Comprar BlockIdCoin
-Ahora puede comprar BlockIdCoin directamente sin dejar su billetera y con sus claves privadas.
+Comprar BlockId
+Ahora puede comprar BlockId directamente sin dejar su billetera y con sus claves privadas.
 
 Local Trader
-Plataforma de negociación BlockIdCoin p2p, que le permite comprar y vender bitcoin directamente a otros usuarios sin terceros.
+Plataforma de negociación BlockId p2p, que le permite comprar y vender bitcoin directamente a otros usuarios sin terceros.

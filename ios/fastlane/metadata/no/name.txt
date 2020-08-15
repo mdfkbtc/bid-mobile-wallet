@@ -1,1 +1,1 @@
-BlockIdWallet - BlockIdCoin wallet
+BlockIdWallet - BlockId wallet

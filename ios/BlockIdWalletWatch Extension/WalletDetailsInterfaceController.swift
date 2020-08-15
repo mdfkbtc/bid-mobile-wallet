@@ -1,6 +1,6 @@
 //
 //  WalletDetailsInterfaceController.swift
-//  BlockIdCoinWalletWatch Extension
+//  BlockIdWalletWatch Extension
 //
 //  Created by Marcos Rodriguez on 3/11/19.
 //  Copyright © 2019 Facebook. All rights reserved.

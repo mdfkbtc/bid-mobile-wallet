@@ -1,10 +1,10 @@
-Uma carteira de BlockIdCoin que permite guardar, enviar BlockIdCoin, receber BlockIdCoin e comprar BlockIdCoin, com foco na segurança e simplicidade.
+Uma carteira de BlockId que permite guardar, enviar BlockId, receber BlockId e comprar BlockId, com foco na segurança e simplicidade.
 
-Na BlockIdWallet, uma Carteira de BlockIdCoin em que você controla as chaves privadas. Uma Carteira de BlockIdCoin criada por utilizadores de BlockIdCoin para a comunidade.
+Na BlockIdWallet, uma Carteira de BlockId em que você controla as chaves privadas. Uma Carteira de BlockId criada por utilizadores de BlockId para a comunidade.
 
 Você pode fazer transações com qualquer pessoa no mundo e transformar o sistema financeiro diretamente do seu bolso.
 
-Pode criar gratuitamente uma quantidade ilimitada de carteiras de BlockIdCoin ou importar as carteiras que já tem para o seu aplicativo BlockIdWallet. É fácil e rápido!
+Pode criar gratuitamente uma quantidade ilimitada de carteiras de BlockId ou importar as carteiras que já tem para o seu aplicativo BlockIdWallet. É fácil e rápido!
 
 ---
 
@@ -36,13 +36,13 @@ Substituição de Taxa (RBF)
 Acelere as suas transações aumentando a taxa (BIP125). Pode também alterar o endereço de destinatário em transações não confirmadas.
 
 Carteira de Watch-only
-Carteira de Watch-only/assistir apenas, observe o seu armazenamento externo de BlockIdCoin sem ter de lhe tocar.
+Carteira de Watch-only/assistir apenas, observe o seu armazenamento externo de BlockId sem ter de lhe tocar.
 
 Lightning Network
-Carteira de Lightning sem configurações. Transações baratas e ultra rápidas com a melhor experiência do BlockIdCoin.
+Carteira de Lightning sem configurações. Transações baratas e ultra rápidas com a melhor experiência do BlockId.
 
-Comprar BlockIdCoin
-Agora já pode comprar BlockIdCoin diretamente sem sair da sua carteira e com as suas chaves privadas.
+Comprar BlockId
+Agora já pode comprar BlockId diretamente sem sair da sua carteira e com as suas chaves privadas.
 
 Local Trader
-Plataforma p2p BlockIdCoin de trading, que permite comprar e vender bitcoin diretamente para outros usuários sem terceiros.
+Plataforma p2p BlockId de trading, que permite comprar e vender bitcoin diretamente para outros usuários sem terceiros.

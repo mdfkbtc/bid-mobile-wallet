@@ -1,1 +1,1 @@
-BlockIdWallet - Carteira BlockIdCoin
+BlockIdWallet - Carteira BlockId
