@@ -556,7 +556,7 @@ export const BlueNavigationStyle = (navigation, withNavigationCloseButton = fals
       <LinearGradient
         shadowColor={BlueCurrentTheme.colors.shadowColor}
         colors={WalletGradient.legacyWallet}
-        style={{ height: 50, }}
+        style={{ height: '100%', }}
       />
     ),
     headerStyle: {
@@ -887,7 +887,7 @@ export class BlueHeader extends Component {
 export class BlueHeaderDefaultSub extends Component {
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: BlueCurrentTheme.colors.brandingColor }}>
+      <SafeAreaView style={{ backgroundColor: 'red' }}>
         <Header
           backgroundColor={BlueCurrentTheme.colors.background}
           leftContainerStyle={{ minWidth: '100%' }}

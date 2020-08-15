@@ -136,7 +136,7 @@ export default class WalletsAdd extends Component {
     walletBaseURI = walletBaseURI || '';
     this.setState({
       isLoading: false,
-      activeBitcoin: undefined,
+      activeBitcoin: true,
       label: '',
       isAdvancedOptionsEnabled,
       walletBaseURI,
@@ -273,17 +273,10 @@ export default class WalletsAdd extends Component {
                 <BlueButton
                   testID="Create"
                   title={loc.wallets.add_create}
-                  disabled={this.state.activeBitcoin === undefined}
+                  disabled={this.state.activeBitcoin === undefined }
                   onPress={() => {
                     this.setState({ isLoading: true }, async () => {
                       let w;
-
-                      if (this.isBiometricUseCapableAndEnabled) {
-                        if (!(await Biometric.unlockWithBiometrics())) {
-                          this.setState({ isLoading: false });
-                          return;
-                        }
-                      }
 
                       if (this.state.activeLightning) {
                         this.createLightningWallet = async () => {
