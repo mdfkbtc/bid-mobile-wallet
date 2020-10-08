@@ -1325,7 +1325,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet;
 				PRODUCT_NAME = BlockIdWallet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlockIdWallet-Bridging-Header.h";
@@ -1361,9 +1361,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet;
 				PRODUCT_NAME = BlockIdWallet;
-				PROVISIONING_PROFILE_SPECIFIER = "io.bluewallet.bluewallet AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "com.blockidchain.blockidcoinwallet AppStore";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlockIdWallet-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1605,7 +1605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.TodayExtension;
 				PRODUCT_NAME = "BlockIdWallet - BlockId Price";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1636,7 +1636,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.TodayExtension;
 				PRODUCT_NAME = "BlockIdWallet - BlockId Price";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1773,7 +1773,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.watch.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "BlockIdWallet for Apple Watch Extension Dist";
 				SDKROOT = watchos;
@@ -1807,7 +1807,7 @@
 				INFOPLIST_FILE = "BlockIdWalletWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.watch.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "BlockIdWallet for Apple Watch Extension Dist";
 				SDKROOT = watchos;
@@ -1840,7 +1840,7 @@
 				INFOPLIST_FILE = BlockIdWalletWatch/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.watch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BlockIdWallet for Apple Watch Distribution";
 				SDKROOT = watchos;
@@ -1874,7 +1874,7 @@
 				IBSC_MODULE = BlockIdWalletWatch_Extension;
 				INFOPLIST_FILE = BlockIdWalletWatch/Info.plist;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.bluewallet.bluewallet.watch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blockidchain.blockidcoinwallet.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BlockIdWallet for Apple Watch Distribution";
 				SDKROOT = watchos;

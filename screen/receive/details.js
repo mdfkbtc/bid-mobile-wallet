@@ -342,7 +342,7 @@ const ReceiveDetails = () => {
       {isHandOffUseEnabled && address !== undefined && showAddress && (
         <Handoff
           title={`BlockIdCoin Transaction ${address}`}
-          type="io.bluewallet.bluewallet"
+          type="com.blockidchain.blockidcoinwallet"
           url={`https://bid.cryptoscope.cc/address/?address=${address}`}
         />
       )}

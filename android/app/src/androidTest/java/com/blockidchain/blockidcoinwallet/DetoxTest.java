@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package com.blockidchain.blockidcoinwallet;
 
 import com.wix.detox.Detox;
 

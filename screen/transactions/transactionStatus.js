@@ -250,7 +250,7 @@ export default class TransactionsStatus extends Component {
         {this.state.isHandOffUseEnabled && (
           <Handoff
             title={`BlockIdCoin Transaction ${this.state.tx.hash}`}
-            type="io.bluewallet.bluewallet"
+            type="com.blockidchain.blockidcoinwallet"
             url={`https://bid.cryptoscope.cc/tx/?txid=${this.state.tx.hash}`}
           />
         )}

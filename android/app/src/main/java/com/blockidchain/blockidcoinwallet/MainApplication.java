@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package com.blockidchain.blockidcoinwallet;
 
 import android.app.Application;
 import android.content.Context;

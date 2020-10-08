@@ -608,7 +608,7 @@ export default class WalletTransactions extends Component {
         {this.state.wallet.chain === Chain.ONCHAIN && this.state.isHandOffUseEnabled && (
           <Handoff
             title={`BlockIdCoin Wallet ${this.state.wallet.getLabel()}`}
-            type="io.bluewallet.bluewallet"
+            type="com.blockidchain.blockidcoinwallet"
             url={`https://blockpath.com/search/addr?q=${this.state.wallet.getXpub()}`}
           />
         )}

@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.io.bluewallet.bluewallet</string>
+		<string>group.com.blockidchain.blockidcoinwallet</string>
 	</array>
 </dict>
 </plist>
